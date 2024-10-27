@@ -29,6 +29,11 @@
   color: #61dafb;
 }
 
+/*УБРАТЬ КОМПОНЕНТ*/
+.hide {
+  display: none;
+}
+
 /*Стили проекта*/
 
 @font-face {
@@ -43,7 +48,36 @@
   font-weight: 700;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'SFPro';
+  src: url('./fonts/SFProDisplay-Heavy.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SFPro';
+  src: url('./fonts/SFProDisplay-Light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SFPro';
+  src: url('./fonts/SFProDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTForsTrial';
+  src: url('./fonts/TT\ Fors\ Trial\ DemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTForsTrial';
+  src: url('./fonts/TT\ Fors\ Trial\ Light\ Italic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
 /*Стили логотипа*/
 .logo {
   width: auto;
@@ -81,3 +115,26 @@
 }
 
 /*Заголовок страницы*/
+.PageTitle{
+  font-size: 60px;
+  line-height: 74px;
+  margin-left: 152px;
+  text-align: left;
+  font-family: 'TTForsTrial';
+  font-weight: 600;
+}
+
+/*Заголовок страницы (курсив)*/
+.PageTitle-italic{
+  font-family: 'TTForsTrial';
+  font-weight: 200;
+}
+
+/*Стили футера*/
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  margin-left: 96px;
+  margin-right: 96px;
+}
