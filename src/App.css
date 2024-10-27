@@ -1,6 +1,7 @@
 /*Изначальные стили*/
 .App {
   text-align: center;
+  background-image: url(./img/background.png);
 }
 
 .App-logo {
@@ -15,7 +16,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,40 @@
   font-style: normal;
 }
 
-
-.Button {
-  font-family: 'SFPro', sans-serif
+/*Стили логотипа*/
+.logo {
+  width: auto;
+  height: auto;
+  margin-right: 290px;
 }
+
+/*Стили хедера*/
+.Header {
+  margin-top: 64px;
+  margin-left: 96px;
+  margin-right: 96px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/*Стили кнопки*/
+.Button {
+  font-family: 'SFPro', sans-serif;
+  background-color: transparent;
+  border: none;
+  font-size: 28px;
+}
+
+.account-btn {
+  background-color: #CCFF95;
+  padding: 14.5px 56px;
+  border-radius: 50px;
+}
+
+/*Заголовок страницы*/
