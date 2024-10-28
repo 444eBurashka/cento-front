@@ -1,7 +1,7 @@
 import Button from "./Button";
 import Input from "./Input";
 
-export default function Footer(props) {
+export default function Form(props) {
     return(
         <form className="Form">
             <h2>Личный кабинет</h2>
