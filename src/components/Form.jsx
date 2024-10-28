@@ -6,6 +6,7 @@ export default function Form(props) {
     const Data = props.formType === "login" ? loginData : registerData;
     const fields = Object.entries(Data.contentFields);
     const isSubmit = props.formType === "login" ? "hide" : '';
+
     return(
         <form className={"Form " + props.formType}>
             <h2>{Data.title}</h2>

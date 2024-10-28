@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './components/pages/loginPage';
 import MainPage from './components/pages/MainPage';
 import RegisterPage from './components/pages/registerPage';
+import LoginPage from './components/pages/loginPage';
 
 function App() {
   return (
