@@ -154,6 +154,15 @@ h2 {
   width: 100%;
   margin-bottom: 38px;
 }
+.Form div {
+  display: flex;
+  justify-content: center;
+}
+.Form div > Button {
+  font-size: 20px;
+  color: #77A248;
+}
+
 
 /*Стили поля ввода*/
 .Input {
@@ -191,6 +200,28 @@ h2 {
   margin-bottom: 48px;
   margin-left: 96px;
   margin-right: 96px;
+  align-items: flex-end;
+}
+.Footer Button {
+  border-radius: 20px;
+}
+.footer-btn1 {
+  padding: 49.5px 64px;
+  background-color: #CCFF95;
+}
+.footer-btn2 {
+  padding: 22px 142px;
+  border: 4px solid #444444;
+  height: 89px;
+}
+.footer-btn3 {
+  padding: 20px 48px;
+  background-color: #C7C7C7;
+  height: 89px;
+}
+.footer-btn4 {
+  padding: 54px 82px;
+  background-color: #CCFF95;
 }
 
 /*Стили страницы входа*/
