@@ -10,7 +10,7 @@ const loginData = {
 };
 
 const registerData = {
-    title: "Личный кабинет",
+    title: "Регистрация",
     contentFields: {
         "Имя Фамилия":"Введите ваше имя и фамилиюа",
         "Почта":"Введите вашу почту",

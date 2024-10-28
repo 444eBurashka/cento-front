@@ -7,7 +7,7 @@ export default function LoginPage(props) {
     return (
         <div className="App">
             <Header />
-            <div className="loginPage-Container">
+            <div className="page-Container">
                 <div>
                     <PageTitle pageName="САМОЕ ВРЕМЯ ВЕРНУТЬСЯ К " pageNameItalic="ЗАНЯТИЯМ!"/>
                     <p className="text-info"><b>Cento</b> – сервис для репетиторов и учеников по подготовке к ЕГЭ и ОГЭ. 
@@ -16,7 +16,7 @@ export default function LoginPage(props) {
                         <br></br>
                         Занимайся с комфортом.</p>
                 </div>
-                <Form formtype='login'/>
+                <Form formType='login'/>
             </div>
             <Footer />
         </div>
