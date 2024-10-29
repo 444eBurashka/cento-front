@@ -13,6 +13,14 @@ a {
   color: #010101;
 }
 
+h1 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -211,7 +219,7 @@ a {
 }
 
 /*Стили страницы входа*/
-.page-Container {
+.page-container {
   margin-left: 152px;
   margin-right: 88px;
   display: flex;
@@ -277,4 +285,53 @@ h2 {
   font-size: 20px;
   color: #737373;
   line-height: 24px;
+}
+
+/*Стили полей*/
+.Field {
+  display: flex;
+  flex-direction: column;
+}
+.Field label {
+  font-size: 24px;
+  color: #95CA5A;
+  font-weight: 500;
+}
+.Field p {
+  font-size: 32px;
+  color: #000000;
+  font-weight: 400;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.info-container {
+  display: flex;
+  gap: 49px;
+  margin-bottom: 46px;
+}
+
+.fields-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: start;
+}
+
+.page-container p{
+  font-size: 32px;
+  font-family: "SFPro";
+  font-weight: 400;
+  text-align: start;
+  margin-top: 14px;
+}
+.info-container > p{
+  font-size: 40px;
+  font-family: "TTForsTrial";
+  font-weight: 200;
+  text-align: start;
 }
