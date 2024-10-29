@@ -116,10 +116,14 @@ a {
   border: none;
   font-size: 28px;
 }
-
 .account-btn {
   background-color: #CCFF95;
   padding: 14.5px 56px;
+  border-radius: 50px;
+}
+.editBtn {
+  border: 3px solid #010101;
+  padding: 14px 40px;
   border-radius: 50px;
 }
 
@@ -145,7 +149,6 @@ a {
   font-size: 32px;
   text-align: start;
 }
-
 
 /*Стили поля ввода*/
 .Input {
