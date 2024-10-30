@@ -12,6 +12,20 @@ a {
   display: ruby-text;
   color: #010101;
 }
+h1 {
+  margin: 0;
+}
+h3 {
+  margin: 0;
+  font-family: "SFPro";
+  font-size: 24px;
+  font-weight: 500;
+  color: #95CA5A;
+  text-align: start;
+}
+p {
+  margin: 0;
+}
 
 .App-logo {
   height: 40vmin;
@@ -116,11 +130,16 @@ a {
   border: none;
   font-size: 28px;
 }
-
 .account-btn {
   background-color: #CCFF95;
   padding: 14.5px 56px;
   border-radius: 50px;
+}
+.editBtn {
+  border: 3px solid #010101;
+  padding: 14px 40px;
+  border-radius: 50px;
+  box-sizing: border-box;
 }
 
 /*Заголовок страницы*/
@@ -145,7 +164,6 @@ a {
   font-size: 32px;
   text-align: start;
 }
-
 
 /*Стили поля ввода*/
 .Input {
@@ -207,8 +225,8 @@ a {
   background-color: #CCFF95;
 }
 
-/*Стили страницы входа*/
-.page-Container {
+/*Стили страницы*/
+.page-container {
   margin-left: 152px;
   margin-right: 88px;
   display: flex;
@@ -274,4 +292,83 @@ h2 {
   font-size: 20px;
   color: #737373;
   line-height: 24px;
+}
+
+/*Стили полей*/
+.Field {
+  display: flex;
+  flex-direction: column;
+}
+.Field label {
+  font-size: 24px;
+  color: #95CA5A;
+  font-weight: 500;
+}
+.Field p {
+  font-size: 32px;
+  color: #000000;
+  font-weight: 400;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.info-container {
+  display: flex;
+  gap: 49px;
+  margin-bottom: 46px;
+}
+
+.fields-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: start;
+}
+
+.page-container p{
+  font-size: 32px;
+  font-family: "SFPro";
+  font-weight: 400;
+  text-align: start;
+  margin-top: 14px;
+}
+.info-container > p{
+  font-size: 40px;
+  font-family: "TTForsTrial";
+  font-weight: 200;
+  text-align: start;
+}
+
+/*Стиль плашки для учителя*/
+.SectionButton {
+  display: flex;
+  width: 326px;
+  height: 127px;
+  border-radius: 20px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-bottom: 13px;
+  padding-left: 16px;
+}
+
+.teachers-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 40px;
+  margin-top: 25px;
+}
+
+.page-container-fix {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.subjects-section {
+
 }
