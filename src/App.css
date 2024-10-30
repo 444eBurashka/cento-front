@@ -12,11 +12,17 @@ a {
   display: ruby-text;
   color: #010101;
 }
-
 h1 {
   margin: 0;
 }
-
+h3 {
+  margin: 0;
+  font-family: "SFPro";
+  font-size: 24px;
+  font-weight: 500;
+  color: #95CA5A;
+  text-align: start;
+}
 p {
   margin: 0;
 }
@@ -133,6 +139,7 @@ p {
   border: 3px solid #010101;
   padding: 14px 40px;
   border-radius: 50px;
+  box-sizing: border-box;
 }
 
 /*Заголовок страницы*/
@@ -218,7 +225,7 @@ p {
   background-color: #CCFF95;
 }
 
-/*Стили страницы входа*/
+/*Стили страницы*/
 .page-container {
   margin-left: 152px;
   margin-right: 88px;
@@ -334,4 +341,34 @@ h2 {
   font-family: "TTForsTrial";
   font-weight: 200;
   text-align: start;
+}
+
+/*Стиль плашки для учителя*/
+.SectionButton {
+  display: flex;
+  width: 326px;
+  height: 127px;
+  border-radius: 20px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-bottom: 13px;
+  padding-left: 16px;
+}
+
+.teachers-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 40px;
+  margin-top: 25px;
+}
+
+.page-container-fix {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.subjects-section {
+
 }

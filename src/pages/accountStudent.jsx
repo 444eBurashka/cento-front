@@ -4,25 +4,39 @@ import PageTitle from "../components/PageTitle";
 import Button from "../components/Button";
 import Field from "../components/Field";
 import avatar from '../img/defaultAvatar.png';
+import SectionButton from "../components/SectionButton";
 
 export default function AccountTeacher(props) {
     return (
         <div className="App">
             <Header />
-            <div className="page-Container">
-                <div>
-                    <div>
+            <div className="page-container">
+                <div className="page-container-fix">
+                    <div className="profile-container">
                         <PageTitle pageName="ПРОФИЛЬ"/>
                         <Button buttonName="Редактировать" buttonClass="editBtn"/>
                     </div>
-                    <img src={avatar} alt="Avatar" className='avatar'></img>
-                    <Field fieldLabel="ФИО" fieldText="Иванов Иван Иванович"/>
-                    <Field fieldLabel="Почта" fieldText="i.i.ivanov@mail.ru"/>
-                    <Field fieldLabel="Специализация" fieldText="Подготовка к ОГЭ и ЕГЭ по физике"/>
-                    <p className="mainQuote">Ключевое в подготовке - правильный подход к решению задачи! </p>
-                    <PageTitle pageName="ОБРАЗОВАНИЕ"/>
-                    <p>Закончил ведущий лицей №108 в г. Москва. В 2014 году поступил в Институт новых материалов и технологий УрФУ на программу “Металлургия и инновационные решение”. 
-                        Продолжил свое обучение в магистратуре ядерной физики. Опыт подготовки к экзаменам ОГЭ и ЕГЭ по физике 3 года.</p>
+                    <div className="info-container">
+                        <img src={avatar} alt="Avatar" className='avatar'></img>
+                        <div className="fields-container">
+                            <Field fieldLabel="ФИО" fieldText="Денисов Денис Денисович"/>
+                            <Field fieldLabel="Почта" fieldText="d.d.denisov@gmail.com"/>
+                            <Field fieldLabel="Класс" fieldText="11"/>
+                        </div>
+                        <div className="subjects-section">
+                            <h3>Изучаемые предметы</h3>
+                            <p>Профильная математика</p>
+                            <p>Русский язык</p>
+                            <p>Физика</p>
+                        </div>
+                    </div>
+                    <PageTitle pageName="ПРЕПОДАВАТЕЛИ"/>
+                    <div className="teachers-container">
+                        <SectionButton />
+                        <SectionButton />
+                        <SectionButton />
+                        <SectionButton />
+                    </div>
                 </div>
             </div>
             <Footer />
