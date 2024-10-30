@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import Button from "./Button";
 import Input from "./Input";
 import { loginData, registerData } from "../data.js";
@@ -22,7 +24,9 @@ export default function Form(props) {
             <Button buttonName={Data.submitBtnText} buttonClass="account-btn"/>
             <div>
                 <p>{Data.addText}</p>
-                <Button buttonName={Data.addBtnText}></Button>
+                <Link to={Data.linkAddBtn}>
+                    <Button buttonName={Data.addBtnText} />
+                </Link>
             </div>
         </form>
     )

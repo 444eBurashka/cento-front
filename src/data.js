@@ -7,6 +7,7 @@ const loginData = {
     submitBtnText: "Войти в аккаунт",
     addText: "Ещё нет аккаунта?",
     addBtnText: 'Зарегистрироваться',
+    linkAddBtn: '/registration',
 };
 
 const registerData = {
@@ -21,6 +22,7 @@ const registerData = {
     submitBtnText: "Зарегистрироваться",
     addText: "Уже есть аккаунт?",
     addBtnText: 'Просто зайдем в него',
+    linkAddBtn: '/login',
 };
 
 export {loginData, registerData}
