@@ -22,10 +22,10 @@ export default function Form(props) {
                 <label for="scales">Даю согласие на обработку персональных данных в соответствии с <a href="#">пользовательским соглашением</a></label>
             </div>
             <Button buttonName={Data.submitBtnText} buttonClass="account-btn"/>
-            <div>
+            <div className='addInfo'>
                 <p>{Data.addText}</p>
                 <Link to={Data.linkAddBtn}>
-                    <Button buttonName={Data.addBtnText} />
+                    <Button buttonName={Data.addBtnText} buttonClass="regBtn"/>
                 </Link>
             </div>
         </form>

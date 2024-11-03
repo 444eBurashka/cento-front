@@ -334,7 +334,6 @@ h2 {
   font-family: "SFPro";
   font-weight: 400;
   text-align: start;
-  margin-top: 14px;
 }
 .info-container > p{
   font-size: 40px;
@@ -369,6 +368,20 @@ h2 {
   width: 100%;
 }
 
-.subjects-section {
+.Form .addInfo {
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+}
 
+.Form > .addInfo > p {
+  font-family: "SFPro";
+  font-size: 20px;
+  color: #010101;
+}
+
+.regBtn {
+  font-family: "SFPro";
+  font-size: 20px;
+  color: #77A248;
 }
