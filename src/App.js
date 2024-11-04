@@ -6,6 +6,7 @@ import LoginPage from './pages/loginPage';
 import AccountTeacher from './pages/accountTeacher';
 import AccountStudent from './pages/accountStudent';
 import StudentsPage from './pages/studentsPage';
+import StudentTasksPage from './pages/studentTasksPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="accountTeacher" element={<AccountTeacher />} />
         <Route path="accountStudent" element={<AccountStudent />} />
         <Route path="myStudents" element={<StudentsPage />} />
+        <Route path="myTasks" element={<StudentTasksPage/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -238,6 +238,8 @@ p {
 .page-container-column {
   flex-direction: column;
   gap: 58px;
+  margin-top: 90px;
+  margin-bottom: 60px;
 }
 
 /*Стили формы*/
@@ -316,7 +318,8 @@ h2 {
 }
 
 /*Стиль блока ученика*/
-.student-wrapper {
+.student-wrapper, 
+.taskInfo-wrapper {
   padding: 29px 32px;
   display: flex;
   justify-content: space-between;
@@ -324,13 +327,15 @@ h2 {
   background-color: rgba(217, 217, 217, 0.4);
   border-radius: 15px;
 }
-.student-wrapper span {
+.student-wrapper span,
+.taskInfo-wrapper span {
   font-family: "SFPro";
   font-size: 32px;
   color: #000000;
   font-weight: 500;
 }
-.student-wrapper .editBtn {
+.student-wrapper .editBtn,
+.taskInfo-wrapper .editBtn {
   background-color: #FFFFFF;
 }
 .info-wrapper {
@@ -418,7 +423,8 @@ h2 {
   color: #77A248;
 }
 
-.students-list {
+.students-list,
+.tasks-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
