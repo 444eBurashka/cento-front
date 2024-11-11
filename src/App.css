@@ -518,3 +518,8 @@ h2 {
   font-weight: 600;
   font-size: 60px;
 }
+.variant-interface-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
