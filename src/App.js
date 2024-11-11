@@ -7,6 +7,7 @@ import AccountTeacher from './pages/accountTeacher';
 import AccountStudent from './pages/accountStudent';
 import StudentsPage from './pages/studentsPage';
 import StudentTasksPage from './pages/studentTasksPage';
+import TasksBasePage from './pages/TasksBasePage';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path="accountStudent" element={<AccountStudent />} />
         <Route path="myStudents" element={<StudentsPage />} />
         <Route path="myTasks" element={<StudentTasksPage/>} />
+        <Route path="tasksBase" element={<TasksBasePage/>} />
+        <Route path="variantsBase" element={<StudentTasksPage/>} />
+        <Route path="variantConstructor" element={<StudentTasksPage/>} />
+        <Route path="taskConstructor" element={<StudentTasksPage/>} />
       </Routes>
     </BrowserRouter>
   );

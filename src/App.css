@@ -23,6 +23,9 @@ h3 {
   color: #95CA5A;
   text-align: start;
 }
+h4 {
+  margin: 0;
+}
 p {
   margin: 0;
 }
@@ -87,6 +90,12 @@ p {
   font-family: 'SFPro';
   src: url('./fonts/SFProDisplay-Medium.ttf') format('truetype');
   font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SFPro';
+  src: url('./fonts/SFProDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
 }
 @font-face {
@@ -428,4 +437,84 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/*Стили поля с выбором*/
+.Select {
+  border: 3px solid #000000;
+  border-radius: 50px;
+  padding: 15px 33px;
+  font-family: "SFPro";
+  font-size: 28px;
+  font-weight: 500;
+  appearance: none;
+  overflow: hidden;
+  background: url('../src/img/select-arrow.png') no-repeat right;
+}
+
+/*Стили поиска*/
+.Search {
+  border: 3px solid #000000;
+  border-radius: 50px;
+  padding: 15px 82px;
+  font-family: "SFPro";
+  font-size: 28px;
+  font-weight: 500;
+  background: url('../src/img/search.png') no-repeat left;
+}
+
+.Search::placeholder {
+  color: #010101;
+}
+
+.search-container {
+  display: grid;
+  column-gap: 82px;
+  grid-template-columns: 1fr 1fr;
+  margin-right: 215px;
+}
+
+/*Стили задания*/
+.Task {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+.Task > h4 {
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.Task > p {
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 31px;
+}
+.Task > img {
+  width:min-content;
+  margin-bottom: 30px;
+}
+.task-interface-container {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.task-interface-container > span{
+  font-family: "SFPro";
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.base-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.notfoundTitle {
+  font-family: 'TTForsTrial';
+  font-weight: 600;
+  font-size: 60px;
 }
