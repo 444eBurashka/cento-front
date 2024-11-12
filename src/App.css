@@ -541,3 +541,107 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 26px;
 }
+
+.task-constructor {
+  background-color:rgba(217, 217, 217, 0.4);
+  border-radius: 15px;
+  padding: 18px 32px 56px;
+}
+
+.task-constructor > div > span,
+.task-constructor > span, 
+.task-constructor > div > div > div > span{
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.simple-select {
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  border-bottom: 2px solid #010101;
+  border-radius: 0px;
+  padding: 14px 6px;
+  background: url('../src/img/simple-search.png') no-repeat right;
+  min-width: 320px;
+}
+
+.task-constructor > div > input,
+.task-constructor > div > span > input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid #000000;
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.task-constructor-header, 
+.task-constructor-image-title {
+  display: flex;
+  justify-content: space-between;
+}
+.task-constructor-header > span > input {
+  width: 32px;
+}
+.task-constructor-search {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.task-constructor-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.task-constructor-description-wrapper {
+  display: flex;
+  gap: 24px;
+}
+.task-constructor-description-wrapper > button{
+  border: none;
+  background-color: transparent;
+  font-family: "SFPro";
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.task-constructor-description > textarea {
+  position: inherit;
+  border-radius: 15px;
+  border: none;
+  font-size: 18px;
+  font-family: "SFPro";
+  color: #010101;
+  padding: 31px 28px 17px;
+  min-width: 1000px;
+  min-height: 340px;
+}
+.task-constructor-image {
+  display: flex;
+  flex-direction: column;
+}
+.task-constructor-image > div > button {
+  border: none;
+  background-color: transparent;
+  color: #BAFD71;
+  font-size: 56px;
+}
+.task-constructor-image-wrapper {
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-constructor-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  position: relative;
+  margin-bottom: 28px;
+}
+.task-constructor-answer {
+  margin-top: 14px;
+}

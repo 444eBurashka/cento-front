@@ -1,14 +1,9 @@
-const data = {
-    "math":'Математика', 
-    "info":"Информатика", 
-    "rus":"Русский язык"};
-
 export default function Select(props) {
-    props = data;
+    const data = props.answers;
     return (
-        <select className="Select">
-            <option selected disabled>Поиск по разделам</option>
-            {Object.entries(props).map(([key, value]) => <option value={key}>{value}</option>)}
+        <select className={"Select " + props.selectClass}>
+            <option selected disabled>{props.text}</option>
+            {Object.entries(data).map(([key, value]) => <option value={key}>{value}</option>)}
         </select>
     )
 }

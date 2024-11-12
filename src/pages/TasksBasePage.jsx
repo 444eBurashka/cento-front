@@ -6,6 +6,10 @@ import Search from "../components/Search";
 import Task from "../components/Task";
 import taskImage from '../img/taskImage.png';
 
+const answersData={
+    "math":'Математика', 
+    "info":"Информатика", 
+    "rus":"Русский язык"};
 const status='found';
 
 export default function TasksBasePage(props) {
@@ -18,7 +22,7 @@ export default function TasksBasePage(props) {
                 <PageTitle pageName="БАНК ЗАДАНИЙ"/>
                 <div className="search-container">
                     <Search textSearch="Поиск по номеру задания"></Search>
-                    <Select></Select>
+                    <Select text='Поиск по разделам' answers={answersData}></Select>
                 </div>
                 <div className={"notfoundTitle " + addClassInfo}>
                     <p>К СОЖАЛЕНИЮ, ПО ВАШЕМУ <br></br> ЗАПРОСУ НИЧЕГО НЕ НАЙДЕНО</p>
