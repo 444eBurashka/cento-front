@@ -17,7 +17,7 @@ export default function TasksBasePage(props) {
             <div className="page-container-column">
                 <PageTitle pageName="БАНК ЗАДАНИЙ"/>
                 <div className="search-container">
-                    <Search></Search>
+                    <Search textSearch="Поиск по номеру задания"></Search>
                     <Select></Select>
                 </div>
                 <div className={"notfoundTitle " + addClassInfo}>
