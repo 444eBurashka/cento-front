@@ -570,7 +570,8 @@ h2 {
 }
 
 .task-constructor > div > input,
-.task-constructor > div > span > input {
+.task-constructor > div > span > input,
+.variant-constructor-first-step > input {
   background-color: transparent;
   border: none;
   border-bottom: 3px solid #000000;
@@ -584,7 +585,7 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
-.task-constructor-header > span > input {
+.task-constructor-header > span > input, .variant-constructor-first-step > input {
   width: 32px;
 }
 .task-constructor-search {
@@ -700,3 +701,17 @@ h2 {
   border: none;
   height: 46px; 
 }
+.variant-constructor-first-step > Button{
+  padding: 14px 24px;
+}
+.variant-constructor-first-step > p {
+  font-family: "SFPro";
+  font-size: 40px;
+  font-weight: 500;
+}
+.variant-constructor-first-step {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+

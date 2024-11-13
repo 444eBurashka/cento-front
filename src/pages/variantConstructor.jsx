@@ -5,11 +5,15 @@ import Task from "../components/Task";
 import taskImage from '../img/taskImage.png';
 import Button from "../components/Button";
 
+const status = "1";
+const addClassF = status === "0" ? "" : "hide";
+const addClassS = status === "1" ? "" : "hide";
+
 export default function VariantConstructor(props) {
     return (
         <div className="App">
             <Header />
-            <div className="page-container-column">
+            <div className={"page-container-column " + addClassF}>
                 <PageTitle pageName="КОНСТРУКТОР ВАРИАНТОВ"/>
                 <div className={"base-tasks-list "}>
                     <Task taskClass="notEditable" id='1' description='На рисунке изображён график функции y=f(x). 
@@ -22,6 +26,40 @@ export default function VariantConstructor(props) {
                     <Button buttonName="Сохранить вариант" buttonClass="account-btn"></Button>
                     <Button buttonName="Удалить вариант" buttonClass="editBtn"></Button>
                 </div>
+            </div>
+            <div className={"page-container-column " + addClassS}>
+                <PageTitle pageName="КОНСТРУКТОР ВАРИАНТОВ"/>
+                <div className="variant-constructor-first-step">
+                    <Button buttonClass="editBtn" buttonName="-">-</Button>
+                    <input></input>
+                    <Button buttonClass="editBtn" buttonName="+">+</Button>
+                    <p>1. Не, ну это очень интересная тема, правда я понятия не имею о чем она</p>
+                </div>
+                <div className="variant-constructor-first-step">
+                    <Button buttonClass="editBtn" buttonName="-">-</Button>
+                    <input></input>
+                    <Button buttonClass="editBtn" buttonName="+">+</Button>
+                    <p>1. Не, ну это очень интересная тема, правда я понятия не имею о чем она</p>
+                </div>
+                <div className="variant-constructor-first-step">
+                    <Button buttonClass="editBtn" buttonName="-">-</Button>
+                    <input></input>
+                    <Button buttonClass="editBtn" buttonName="+">+</Button>
+                    <p>1. Не, ну это очень интересная тема, правда я понятия не имею о чем она</p>
+                </div>
+                <div className="variant-constructor-first-step">
+                    <Button buttonClass="editBtn" buttonName="-">-</Button>
+                    <input></input>
+                    <Button buttonClass="editBtn" buttonName="+">+</Button>
+                    <p>1. Не, ну это очень интересная тема, правда я понятия не имею о чем она</p>
+                </div>
+                <div className="variant-constructor-first-step">
+                    <Button buttonClass="editBtn" buttonName="-">-</Button>
+                    <input></input>
+                    <Button buttonClass="editBtn" buttonName="+">+</Button>
+                    <p>1. Не, ну это очень интересная тема, правда я понятия не имею о чем она</p>
+                </div>
+                <Button buttonClass="account-btn" buttonName="Составить вариант">Составить вариант</Button>
             </div>
             <Footer />
         </div>
