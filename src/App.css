@@ -550,10 +550,12 @@ h2 {
 
 .task-constructor > div > span,
 .task-constructor > span, 
+.task-constructor > p,
 .task-constructor > div > div > div > span{
   font-family: "SFPro";
   font-size: 36px;
   font-weight: 700;
+  text-align: start;
 }
 
 .simple-select {
@@ -606,7 +608,8 @@ h2 {
   font-size: 24px;
   margin-bottom: 16px;
 }
-.task-constructor-description > textarea {
+.task-constructor-description > textarea,
+.task-constructor-answer-text-wrapper > textarea {
   position: inherit;
   border-radius: 15px;
   border: none;
@@ -644,4 +647,56 @@ h2 {
 }
 .task-constructor-answer {
   margin-top: 14px;
+}
+
+.task-constructor-answer-variants-wrapper {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+.task-constructor-answer-variant > label {
+  font-family: "SFPro";
+  font-size: 18px;
+  color: #010101;
+  font-weight: 300;
+}
+.task-constructor-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.task-constructor-answer > Select{
+  margin-bottom: 24px;
+}
+.task-constructor-answer-text-wrapper > textarea {
+  width: 100%;
+  min-height: 115px;
+}
+.task-constructor-answer-table-wrapper > span {
+  font-family: "SFPro";
+  font-size: 18px;
+  font-weight: 300;
+}
+.task-constructor-answer-table-wrapper > span > input {
+  font-family: "SFPro";
+  font-size: 18px;
+  font-weight: 300;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  width: 18px;
+}
+#row-span {
+  margin-right: 40px;
+}
+.task-constructor-answer-table {
+  margin-top: 13px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+.task-constructor-answer-table > textarea {
+  border-radius: 15px;
+  border: none;
+  height: 46px; 
 }

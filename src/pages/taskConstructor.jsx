@@ -18,6 +18,14 @@ const formatAnswers={
     "text":"Развернутый ответ", 
     "table":"Табличный ответ"}
 
+const getCount = count => {
+    let content = [];
+    for (let i = 0; i < count; i++) {
+        content.push(<textarea></textarea>);
+    }
+    return content;
+};
+
 export default function TaskConstructor(props) {
     return (
         <div className="App">
@@ -55,19 +63,36 @@ export default function TaskConstructor(props) {
                             </div>
                         </div>
                     </div>
-                    <span>Правильный ответ</span>
+                    <p>Правильный ответ</p>
                     <div className="task-constructor-answer">
-                        <div>
-                            <Select selectClass="simple-select" text="Выберите формат ответа" answers={formatAnswers}></Select>
+                        <Select id="task-constructor-select" selectClass="simple-select" text="Выберите формат ответа" answers={formatAnswers}></Select>
+                        <div className="hide task-constructor-answer-variants-wrapper">
+                            <div className="task-constructor-answer-variant">
+                                <input type="radio" id="1" value="var1" checked />
+                                <label for="1">Вариант 1</label>
+                            </div>
+                            <div className="task-constructor-answer-variant">
+                                <input type="radio" id="2" value="var2" />
+                                <label for="2">Вариант 2</label>
+                            </div>
+                            <div className="task-constructor-answer-variant">
+                                <input type="radio" id="3" value="var3" />
+                                <label for="3">Вариант 3</label>
+                            </div>
+                            <div className="task-constructor-answer-variant">
+                                <input type="radio" id="4" value="var4" />
+                                <label for="4">Вариант 4</label>
+                            </div>
                         </div>
-                        <div>
+                        <div className="hide task-constructor-answer-text-wrapper">
                             <textarea placeholder="Введите правильный ответ"></textarea>
                         </div>
-                        <div>
-                            <span></span>
-                            <input></input>
-                            <span></span>
-                            <input></input>
+                        <div className="hide task-constructor-answer-table-wrapper">
+                            <span id='row-span'>Строки<input></input></span>
+                            <span>Столбцы<input></input></span>
+                            <div className="task-constructor-answer-table">
+                                {getCount(6)}
+                            </div>
                         </div>
                     </div>
                 </div>
