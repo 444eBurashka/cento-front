@@ -8,7 +8,6 @@ import defaultImage from "../img/defaultImg.png";
 const formatExamAnswers={
     "OGE":'ОГЭ', 
     "EGE":"ЕГЭ"}
-
 const examsAnswers={
     "math":'Математика', 
     "info":"Информатика", 
@@ -65,7 +64,7 @@ export default function TaskConstructor(props) {
                     </div>
                     <p>Правильный ответ</p>
                     <div className="task-constructor-answer">
-                        <Select id="task-constructor-select" selectClass="simple-select" text="Выберите формат ответа" answers={formatAnswers}></Select>
+                        <Select selectClass="simple-select" text="Выберите формат ответа" answers={formatAnswers}></Select>
                         <div className="hide task-constructor-answer-variants-wrapper">
                             <div className="task-constructor-answer-variant">
                                 <input type="radio" id="1" value="var1" checked />

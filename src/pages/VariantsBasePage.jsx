@@ -4,8 +4,16 @@ import PageTitle from "../components/PageTitle";
 import Search from "../components/Search";
 import Variant from "../components/Variant";
 import Button from "../components/Button";
+import Select from "../components/Select";
 
 const status='found';
+const formatExamAnswers={
+    "OGE":'ОГЭ', 
+    "EGE":"ЕГЭ"}
+const students={
+    "1":'Иванов', 
+    "2":"Петров", 
+    "3":"Сидоров"}
 
 export default function TasksBasePage(props) {
     const addClassTasks = status==='found' ? '' : 'hide';
@@ -36,6 +44,18 @@ export default function TasksBasePage(props) {
                 <Button buttonName="Задать вариант" buttonClass="account-btn"></Button>
             </div>
             <Footer />
+            <div className="hide popup-overlay">
+                <div className="popup">
+                    <div className="title-wrapper">
+                        <p>Выберите формат экзамена</p>
+                        <button className="cross-btn"></button>
+                    </div>
+                    <Select text="Ученики" answers={students}></Select>
+                    <Select text="Режим экзамена" answers={formatExamAnswers}></Select>
+                    <Select text="Срок выполнения" answers={formatExamAnswers}></Select>
+                    <Button buttonClass="account-btn" buttonName="Задать вариант ученикам"></Button>
+                </div>
+            </div>
         </div>
       );
 }

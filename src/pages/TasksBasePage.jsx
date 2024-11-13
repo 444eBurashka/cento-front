@@ -5,12 +5,16 @@ import Select from "../components/Select";
 import Search from "../components/Search";
 import Task from "../components/Task";
 import taskImage from '../img/taskImage.png';
+import Button from "../components/Button";
 
 const answersData={
     "math":'Математика', 
     "info":"Информатика", 
     "rus":"Русский язык"};
 const status='found';
+const formatExamAnswers={
+    "OGE":'ОГЭ', 
+    "EGE":"ЕГЭ"}
 
 export default function TasksBasePage(props) {
     const addClassTasks = status==='found' ? '' : 'hide';
@@ -36,6 +40,17 @@ export default function TasksBasePage(props) {
                 </div>
             </div>
             <Footer />
+            <div className="hide popup-overlay">
+                <div className="popup">
+                    <div className="title-wrapper">
+                        <p>Выберите формат экзамена и предмет</p>
+                        <button className="cross-btn"></button>
+                    </div>
+                    <Select text="Формат экзамена" answers={formatExamAnswers}></Select>
+                    <Select text="Преподаваемая дисциплина" answers={answersData}></Select>
+                    <Button buttonClass="account-btn" buttonName="Сохранить формат"></Button>
+                </div>
+            </div>
         </div>
       );
 }
