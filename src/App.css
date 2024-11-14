@@ -780,7 +780,7 @@ h2 {
   flex-direction: row;
   gap: 32px;
   min-height: 712px;
-
+  margin-bottom: 126px;
 }
 .rate-name{
   font-size: 40px;
@@ -829,4 +829,40 @@ h2 {
 }
 .check-img {
   height: min-content;
+}
+
+/*Стили главной страницы*/
+.MainPage > .page-container-column {
+  gap: 0;
+}
+
+.hero-wrapper {
+  display: flex;
+  padding-left: 56px;
+  padding-right: 56px;
+}
+.hero-wrapper-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.hero-wrapper-left > .PageTitle {
+  margin-bottom: 32px;
+  width: 110%;
+}
+.hero-wrapper-left > p {
+  margin-bottom: 32px;
+  width: 95%;
+}
+.buttons-wrapper {
+  display: flex;
+  margin-bottom: 84px;
+  padding-left: 56px;
+  padding-right: 56px;
+}
+.exam-simulator > p{
+
+}
+.exam-simulator > span{
+
 }

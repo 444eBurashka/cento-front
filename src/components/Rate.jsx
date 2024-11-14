@@ -1,5 +1,5 @@
 import Button from "./Button";
-import funcImg from "../img/check.png";
+import CheckBox from "./CheckBox";
 
 const data = ['Фишка 1', 'Фишка 2, где много текста и необходим перенос', 'Фишка 3']
 
@@ -14,10 +14,7 @@ export default function Rate(props) {
             </div>
             {
                 data.map((elem) => { return (
-                    <div class="func-wrapper">
-                        <img className="check-img" src={funcImg} alt="Знак галочки"></img>
-                        <label>{elem}</label>
-                    </div>   
+                    <CheckBox elem={elem}></CheckBox>  
                 )})
             }
             <Button buttonName="Попробовать" buttonClass="account-btn"></Button>
