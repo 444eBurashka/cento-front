@@ -25,12 +25,12 @@ export default function MainPage(props) {
                     <Button buttonClass="account-btn" buttonName="самое время начать"></Button>
                     <a className="exam-simulator">
                         <p>СИМУЛЯТОР КЕГЭ</p>
-                        <span>– сервис, позволяющий имитировать процесс компьютерного единого государственного экзамена</span>
+                        <span>– сервис, позволяющий имитировать процесс <br></br> компьютерного единого государственного экзамена</span>
                     </a>
                 </div>
                 <div className="rates-block-wrapper">
                     <PageTitle pageName="ПРЕПОДАВАТЕЛЯМ"></PageTitle>
-                    <p>*выберете тарифный план, подходящий именно вам. 
+                    <p>*выберете тарифный план, подходящий именно вам. <br></br>
                     В любой момент его можно сменить.</p>
                     <div className="rate-wrapper">
                         <Rate name="БАЗОВЫЙ" description="все что нужно для комфорта" price="1000₽"></Rate>
@@ -39,18 +39,20 @@ export default function MainPage(props) {
                     </div>
                 </div>
                 <div className="for-students-wrapper">
-                    <PageTitle pageName="ЕСЛИ ТЫ УЧЕНИК, ТО СМОТРИ...."></PageTitle>
-                    <p>Мы как никто знаем, насколько экзаменационный период может быть нервным, и 
-                        поэтому создаем во время подготовки условия максимально приближенные к экзамену. 
-                        Благодаря этому нашим ребятам на экзамене максимально спокойно и все знакомо.</p>
                     <div>
-                        <CheckBox elem="Фишка 1"></CheckBox>  
-                        <CheckBox elem="Фишка 2, где много текста и необходим перенос"></CheckBox>  
-                        <CheckBox elem="Фишка 3"></CheckBox>  
-                        <CheckBox elem="Фишка 4, где много текста и необходим перенос"></CheckBox> 
-                        <Button buttonName="Присоединиться к обучению" buttonClass="account-btn"></Button>
-                        <img src={MainPageImg2} alt="Вторая важная картинка"></img>
+                        <PageTitle pageName="ЕСЛИ ТЫ УЧЕНИК, ТО СМОТРИ...."></PageTitle>
+                        <p>Мы как никто знаем, насколько экзаменационный период может быть нервным, и 
+                            поэтому создаем во время подготовки условия максимально приближенные к экзамену. 
+                            Благодаря этому нашим ребятам на экзамене максимально спокойно и все знакомо.</p>
+                        <div>
+                            <CheckBox elem="Фишка 1"></CheckBox>  
+                            <CheckBox elem="Фишка 2, где много текста и необходим перенос"></CheckBox>  
+                            <CheckBox elem="Фишка 3"></CheckBox>  
+                            <CheckBox elem="Фишка 4, где много текста и необходим перенос"></CheckBox> 
+                            <Button buttonName="Присоединиться к обучению" buttonClass="account-btn"></Button>
+                        </div>
                     </div>
+                    <img src={MainPageImg2} alt="Вторая важная картинка"></img>
                 </div>
             </div>
             <Footer />
