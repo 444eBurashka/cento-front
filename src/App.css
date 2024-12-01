@@ -23,6 +23,9 @@ h3 {
   color: #95CA5A;
   text-align: start;
 }
+h4 {
+  margin: 0;
+}
 p {
   margin: 0;
 }
@@ -90,6 +93,12 @@ p {
   font-style: normal;
 }
 @font-face {
+  font-family: 'SFPro';
+  src: url('./fonts/SFProDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
   font-family: 'TTForsTrial';
   src: url('./fonts/TT\ Fors\ Trial\ DemiBold.ttf') format('truetype');
   font-weight: 600;
@@ -134,6 +143,8 @@ p {
   background-color: #CCFF95;
   padding: 14.5px 56px;
   border-radius: 50px;
+  width: min-content;
+  text-wrap: nowrap;
 }
 .editBtn {
   border: 3px solid #010101;
@@ -226,13 +237,20 @@ p {
 }
 
 /*Стили страницы*/
-.page-container {
+.page-container, 
+.page-container-column {
   margin-left: 152px;
   margin-right: 88px;
   display: flex;
   justify-content: space-between;
   gap: 132px;
   height: fit-content;
+}
+.page-container-column {
+  flex-direction: column;
+  gap: 58px;
+  margin-top: 90px;
+  margin-bottom: 60px;
 }
 
 /*Стили формы*/
@@ -310,6 +328,36 @@ h2 {
   font-weight: 400;
 }
 
+/*Стиль блока ученика*/
+.student-wrapper, 
+.taskInfo-wrapper {
+  padding: 29px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(217, 217, 217, 0.4);
+  border-radius: 15px;
+}
+.student-wrapper span,
+.taskInfo-wrapper span {
+  font-family: "SFPro";
+  font-size: 32px;
+  color: #000000;
+  font-weight: 500;
+}
+.student-wrapper .editBtn,
+.taskInfo-wrapper .editBtn {
+  background-color: #FFFFFF;
+}
+.info-wrapper {
+  display: flex;
+  gap: 120px;
+}
+.buttons-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
 .profile-container {
   display: flex;
   justify-content: space-between;
@@ -334,7 +382,6 @@ h2 {
   font-family: "SFPro";
   font-weight: 400;
   text-align: start;
-  margin-top: 14px;
 }
 .info-container > p{
   font-size: 40px;
@@ -369,6 +416,527 @@ h2 {
   width: 100%;
 }
 
-.subjects-section {
+.Form .addInfo {
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+}
 
+.Form > .addInfo > p {
+  font-family: "SFPro";
+  font-size: 20px;
+  color: #010101;
+}
+
+.regBtn {
+  font-family: "SFPro";
+  font-size: 20px;
+  color: #77A248;
+}
+
+.students-list,
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/*Стили поля с выбором*/
+.Select {
+  border: 3px solid #000000;
+  border-radius: 50px;
+  padding: 15px 33px;
+  font-family: "SFPro";
+  font-size: 28px;
+  font-weight: 500;
+  appearance: none;
+  overflow: hidden;
+  background: url('../src/img/select-arrow.png') no-repeat right;
+}
+
+/*Стили поиска*/
+.Search {
+  border: 3px solid #000000;
+  border-radius: 50px;
+  padding: 15px 82px;
+  font-family: "SFPro";
+  font-size: 28px;
+  font-weight: 500;
+  background: url('../src/img/search.png') no-repeat left;
+}
+
+.Search::placeholder {
+  color: #010101;
+}
+
+.search-container {
+  display: grid;
+  column-gap: 82px;
+  grid-template-columns: 1fr 1fr;
+  margin-right: 215px;
+}
+
+/*Стили задания*/
+.Task {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+.Task > h4 {
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.Task > p {
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 31px;
+}
+.Task > img {
+  width:min-content;
+  margin-bottom: 30px;
+}
+.task-interface-container {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.task-interface-container > span{
+  font-family: "SFPro";
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.base-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.notfoundTitle {
+  font-family: 'TTForsTrial';
+  font-weight: 600;
+  font-size: 60px;
+}
+.variant-interface-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+/*Стили кнопки вариант*/
+.Variant {
+  padding: 26px 92px;
+  font-family: "SFPro"; 
+  font-size: 32px;
+  font-weight: 500;
+  border: #000000 4px solid;
+  border-radius: 20px;
+}
+
+.base-variants-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 26px;
+}
+
+.task-constructor {
+  background-color:rgba(217, 217, 217, 0.4);
+  border-radius: 15px;
+  padding: 18px 32px 56px;
+}
+
+.task-constructor > div > span,
+.task-constructor > span, 
+.task-constructor > p,
+.task-constructor > div > div > div > span{
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 700;
+  text-align: start;
+}
+
+.simple-select {
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  border-bottom: 2px solid #010101;
+  border-radius: 0px;
+  padding: 14px 6px;
+  background: url('../src/img/simple-search.png') no-repeat right;
+  min-width: 320px;
+}
+
+.task-constructor > div > input,
+.task-constructor > div > span > input,
+.variant-constructor-first-step > input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid #000000;
+  font-family: "SFPro";
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.task-constructor-header, 
+.task-constructor-image-title {
+  display: flex;
+  justify-content: space-between;
+}
+.task-constructor-header > span > input, .variant-constructor-first-step > input {
+  width: 32px;
+}
+.task-constructor-search {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.task-constructor-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.task-constructor-description-wrapper {
+  display: flex;
+  gap: 24px;
+}
+.task-constructor-description-wrapper > button{
+  border: none;
+  background-color: transparent;
+  font-family: "SFPro";
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.task-constructor-description > textarea,
+.task-constructor-answer-text-wrapper > textarea {
+  position: inherit;
+  border-radius: 15px;
+  border: none;
+  font-size: 18px;
+  font-family: "SFPro";
+  color: #010101;
+  padding: 31px 28px 17px;
+  min-width: 1000px;
+  min-height: 340px;
+}
+.task-constructor-image {
+  display: flex;
+  flex-direction: column;
+}
+.task-constructor-image > div > button {
+  border: none;
+  background-color: transparent;
+  color: #BAFD71;
+  font-size: 56px;
+}
+.task-constructor-image-wrapper {
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-constructor-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  position: relative;
+  margin-bottom: 28px;
+}
+.task-constructor-answer {
+  margin-top: 14px;
+}
+
+.task-constructor-answer-variants-wrapper {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+.task-constructor-answer-variant > label {
+  font-family: "SFPro";
+  font-size: 18px;
+  color: #010101;
+  font-weight: 300;
+}
+.task-constructor-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.task-constructor-answer > Select{
+  margin-bottom: 24px;
+}
+.task-constructor-answer-text-wrapper > textarea {
+  width: 100%;
+  min-height: 115px;
+}
+.task-constructor-answer-table-wrapper > span {
+  font-family: "SFPro";
+  font-size: 18px;
+  font-weight: 300;
+}
+.task-constructor-answer-table-wrapper > span > input {
+  font-family: "SFPro";
+  font-size: 18px;
+  font-weight: 300;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  width: 18px;
+}
+#row-span {
+  margin-right: 40px;
+}
+.task-constructor-answer-table {
+  margin-top: 13px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+.task-constructor-answer-table > textarea {
+  border-radius: 15px;
+  border: none;
+  height: 46px; 
+}
+.variant-constructor-first-step > Button{
+  padding: 14px 24px;
+}
+.variant-constructor-first-step > p {
+  font-family: "SFPro";
+  font-size: 40px;
+  font-weight: 500;
+}
+.variant-constructor-first-step {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 26px 16px 53px 32px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.popup > div > p {
+  font-size: 36px;
+  font-family: "SFPro";
+  font-weight: 700;
+  margin: 0;
+}
+.popup > Select {
+  width: 80%;
+  margin-bottom: 26px;
+}
+.popup > Button {
+  margin-top: 28px;
+}
+.cross-btn {
+  background-image: url(./img/cross.png);
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
+.title-wrapper {
+  display: flex;
+  margin-bottom: 54px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Тариф*/
+.rate {
+  padding: 37px 37px 41px;
+  border: 4px #000000 solid;
+  border-radius: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.rate-wrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  min-height: 712px;
+  margin-bottom: 126px;
+}
+.rate-name{
+  font-size: 40px;
+  font-family: "TTForsTrial";
+  font-weight: 600;
+}
+.rate-description{
+  font-size: 24px;
+  font-family: "SFPro";
+  font-weight: 400;
+  margin-bottom: 33px;
+}
+.func-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  text-align: start;
+  margin-bottom: 6px;
+}
+.func-wrapper > label{
+  font-size: 28px;
+  font-family: "SFPro";
+  font-weight: 400;
+}
+.price {
+  font-size: 76px;
+  font-family: "TTForsTrial";
+  font-weight: 600;
+}
+.price-period {
+  font-size: 26px;
+  font-family: "SFPro";
+  font-weight: 400;
+}
+.price-wrapper{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 34px;
+  margin-bottom: 21px;
+  border-bottom: #000000 2px solid;
+}
+.rate > Button {
+  position: absolute;
+  bottom: 41px;
+}
+.check-img {
+  height: min-content;
+}
+
+/*Стили главной страницы*/
+.MainPage > .page-container-column {
+  gap: 0;
+}
+
+.hero-wrapper {
+  display: flex;
+  padding-left: 56px;
+  padding-right: 56px;
+}
+.hero-wrapper-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.hero-wrapper-left > .PageTitle {
+  margin-bottom: 32px;
+  width: 110%;
+}
+.hero-wrapper-left > p {
+  margin-bottom: 32px;
+  width: 95%;
+}
+.buttons-wrapper {
+  display: flex;
+  margin-bottom: 84px;
+  padding-left: 56px;
+  padding-right: 56px;
+}
+.exam-simulator > p{
+  font-family: "TTForsTrial";
+  font-size: 40px;
+  font-weight: 600;
+}
+.exam-simulator > span{
+  font-family: "SFPro";
+  font-size: 24px;
+  font-weight: 400;
+  text-align: start;
+}
+.exam-simulator {
+  padding: 28px 32px 28px;
+  border: 4px solid #010101;
+  border-radius: 22px;
+  background-image: url(./img/arrow-main.png);
+  background-repeat: no-repeat;
+  background-position: right 18px top 18px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 18px;
+}
+.buttons-wrapper > Button {
+  background-image: url(./img/arrow-main-2.png);
+  background-repeat: no-repeat ;
+  background-position:  right 36px top 18px;
+  width: 25%;
+  padding-left: 40px;
+}
+
+.rates-block-wrapper > .PageTitle {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.rates-block-wrapper > p {
+  font-family: "SFPro";
+  text-align: center;
+  width: 50%;
+  font-size: 32px;
+  font-weight: 400;
+  margin: auto;
+  margin-bottom: 56px;
+}
+.for-students-wrapper > div > p {
+  font-family: "SFPro";
+  font-size: 32px;
+  font-weight: 400;
+  text-align: start;
+  margin-bottom: 16px;
+}
+.for-students-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.for-students-wrapper {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-bottom: 142px;
+}
+.for-students-wrapper > img {
+  position: absolute;
+  margin-left: 900px;
+}
+.for-students-wrapper > div > div > Button {
+  margin-top: 32px;
+}
+.for-students-wrapper > div > div {
+  display: flex;
+  flex-direction: column;
 }

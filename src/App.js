@@ -5,6 +5,12 @@ import RegisterPage from './pages/registerPage';
 import LoginPage from './pages/loginPage';
 import AccountTeacher from './pages/accountTeacher';
 import AccountStudent from './pages/accountStudent';
+import StudentsPage from './pages/studentsPage';
+import StudentTasksPage from './pages/studentTasksPage';
+import TasksBasePage from './pages/TasksBasePage';
+import VariantConstructor from './pages/variantConstructor';
+import VariantsBasePage from './pages/VariantsBasePage';
+import TaskConstructor from './pages/taskConstructor';
 
 function App() {
   return (
@@ -15,6 +21,12 @@ function App() {
         <Route path="registration" element={<RegisterPage />} />
         <Route path="accountTeacher" element={<AccountTeacher />} />
         <Route path="accountStudent" element={<AccountStudent />} />
+        <Route path="myStudents" element={<StudentsPage />} />
+        <Route path="myTasks" element={<StudentTasksPage/>} />
+        <Route path="tasksBase" element={<TasksBasePage/>} />
+        <Route path="variantsBase" element={<VariantsBasePage/>} />
+        <Route path="variantConstructor" element={<VariantConstructor/>} />
+        <Route path="taskConstructor" element={<TaskConstructor/>} />
       </Routes>
     </BrowserRouter>
   );
