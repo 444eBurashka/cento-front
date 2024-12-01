@@ -44,11 +44,11 @@ export default function Form(props) {
                 <input id="submit" type="checkbox"></input>
                 <label htmlFor="scales">Даю согласие на обработку персональных данных в соответствии с <a href="t.me/matveykhorev">пользовательским соглашением</a></label>
             </div>
-            <Button Type="submit" buttonName={Data.submitBtnText} buttonClass="account-btn"/>
-            <div>
+            <Button buttonName={Data.submitBtnText} buttonClass="account-btn"/>
+            <div className='addInfo'>
                 <p>{Data.addText}</p>
                 <Link to={Data.linkAddBtn}>
-                    <Button buttonName={Data.addBtnText} />
+                    <Button buttonName={Data.addBtnText} buttonClass="regBtn"/>
                 </Link>
             </div>
         </form>

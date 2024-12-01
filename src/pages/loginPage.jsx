@@ -7,7 +7,7 @@ export default function LoginPage(props) {
     return (
         <div className="App">
             <Header />
-            <div className="page-Container">
+            <div className="page-container">
                 <div>
                     <PageTitle pageName="САМОЕ ВРЕМЯ ВЕРНУТЬСЯ К " pageNameItalic="ЗАНЯТИЯМ!"/>
                     <p className="text-info"><b>Cento</b> – сервис для репетиторов и учеников по подготовке к ЕГЭ и ОГЭ. 
