@@ -9,17 +9,40 @@ export default function Form(props) {
     const fields = Object.entries(Data.contentFields);
     const isSubmit = props.formType === "login" ? "hide" : '';
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        const data = {
+        };
+        const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          };
+        console.log(data);
+        fetch("http://31.129.111.117:8000/api/student", options)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    } 
+
     return(
-        <form className={"Form " + props.formType}>
+        <form className={"Form " + props.formType} key={props.formType} onSubmit={handleSubmit}>
             <h2>{Data.title}</h2>
             <div className="fields-container">
             {
-               fields.map(x => <Input textLabel={x[0]} placeholder={x[1]} />)
+                fields.map(x => 
+                    <Input
+                        key={props.formType + x[0]}
+                        textLabel={x[0]}
+                        placeholder={x[1]}
+                    />)
             }
             </div>
             <div className={"submit-container " + isSubmit}>
                 <input id="submit" type="checkbox"></input>
-                <label for="scales">Даю согласие на обработку персональных данных в соответствии с <a href="#">пользовательским соглашением</a></label>
+                <label htmlFor="scales">Даю согласие на обработку персональных данных в соответствии с <a href="t.me/matveykhorev">пользовательским соглашением</a></label>
             </div>
             <Button buttonName={Data.submitBtnText} buttonClass="account-btn"/>
             <div className='addInfo'>

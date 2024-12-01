@@ -1,5 +1,6 @@
 export default function Button(props) {
+    const btnType = props.Type === "submit" ? "submit" : "button"
     return(
-        <button className={"Button " + props.buttonClass}>{props.buttonName}</button>
+        <button type={btnType} className={"Button " + props.buttonClass}>{props.buttonName}</button>
     )
 }
