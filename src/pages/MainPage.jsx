@@ -23,7 +23,7 @@ export default function MainPage(props) {
                 </div>
                 <div className="buttons-wrapper">
                     <Button buttonClass="account-btn" buttonName="самое время начать"></Button>
-                    <a className="exam-simulator">
+                    <a href="/exam-simulator" className="exam-simulator">
                         <p>СИМУЛЯТОР КЕГЭ</p>
                         <span>– сервис, позволяющий имитировать процесс <br></br> компьютерного единого государственного экзамена</span>
                     </a>

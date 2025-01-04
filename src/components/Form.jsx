@@ -12,6 +12,10 @@ export default function Form(props) {
     function handleSubmit(e) {
         e.preventDefault();
         const data = {
+            "email": e.target[1].value,
+            "password": e.target[3].value,
+            "role": e.target[2].value,
+            "username": e.target[0].value
         };
         const options = {
             method: 'POST',
@@ -20,11 +24,11 @@ export default function Form(props) {
             },
             body: JSON.stringify(data)
           };
-        console.log(data);
-        fetch("http://31.129.111.117:8000/api/student", options)
+        fetch("http://31.129.111.117:8000/api/register/", options)
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.error(error));
+        e.target.reset();
     } 
 
     return(
@@ -44,7 +48,7 @@ export default function Form(props) {
                 <input id="submit" type="checkbox"></input>
                 <label htmlFor="scales">Даю согласие на обработку персональных данных в соответствии с <a href="t.me/matveykhorev">пользовательским соглашением</a></label>
             </div>
-            <Button buttonName={Data.submitBtnText} buttonClass="account-btn"/>
+            <Button buttonName={Data.submitBtnText} buttonClass="account-btn" Type="submit"/>
             <div className='addInfo'>
                 <p>{Data.addText}</p>
                 <Link to={Data.linkAddBtn}>
