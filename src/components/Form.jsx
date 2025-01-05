@@ -24,7 +24,7 @@ export default function Form(props) {
             },
             body: JSON.stringify(data)
           };
-        fetch("http://127.0.0.1:8000/api/register/", options)
+        fetch("http://31.129.111.117:8000/api/register/", options)
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.error(error));

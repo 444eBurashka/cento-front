@@ -1,13 +1,39 @@
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
 import Button from "../components/Button";
 import Rate from "../components/Rate";
 import CheckBox from "../components/CheckBox";
-import MainPageImg1 from "../img/main-page-1.png"
-import MainPageImg2 from "../img/main-page-2.png"
+import MainPageImg1 from "../img/main-page-1.png";
+import MainPageImg2 from "../img/main-page-2.png";
 
 export default function MainPage(props) {
+    const [rates, setRates] = useState([]); // Используем состояние для хранения данных
+
+    useEffect(() => {
+        const fetchRates = async () => {
+            const options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            };
+
+            try {
+                const response = await fetch("http://31.129.111.117:8000/api/tariff/", options);
+                const data = await response.json();
+                setRates(data);
+            } catch (error) {
+                console.error("Ошибка при загрузке данных:", error);
+            }
+        };
+
+        fetchRates();
+    }, []);
+
+    console.log(rates);
+
     return (
         <div className="App MainPage">
             <Header />
@@ -33,9 +59,14 @@ export default function MainPage(props) {
                     <p>*выберете тарифный план, подходящий именно вам. <br></br>
                     В любой момент его можно сменить.</p>
                     <div className="rate-wrapper">
-                        <Rate name="БАЗОВЫЙ" description="все что нужно для комфорта" price="1000₽"></Rate>
-                        <Rate name="ПРОДВИНУТЫЙ" description="все что нужно, и немного больше" price="1500₽"></Rate>
-                        <Rate name="V.I.P." description="не, ну ты вообще.." price="2000₽"></Rate>
+                        {
+                            rates.map(elem => {
+                                const desc = elem["tariff_info"].split('\n')
+                                return (
+                                    <Rate name={ elem["tariff_name"] } description={ desc[0] } price={ elem["price"] } advantages={ desc.slice(1) }></Rate>
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <div className="for-students-wrapper">
