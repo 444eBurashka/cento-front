@@ -14,7 +14,7 @@ export default function AccountTeacher(props) {
                 <div className="page-container-fix">
                     <div className="profile-container">
                         <PageTitle pageName="ПРОФИЛЬ"/>
-                        <Button buttonName="Редактировать" buttonClass="editBtn"/>
+                        {/* <Button buttonName="Редактировать" buttonClass="editBtn"/> */}
                     </div>
                     <div className="info-container">
                         <img src={avatar} alt="Avatar" className='avatar'></img>

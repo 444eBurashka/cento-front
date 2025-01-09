@@ -6,6 +6,7 @@ import Field from "../components/Field";
 import avatar from '../img/defaultAvatar.png';
 
 export default function AccountTeacher(props) {
+
     return (
         <div className="App">
             <Header />
@@ -13,7 +14,7 @@ export default function AccountTeacher(props) {
                 <div>
                     <div className="profile-container">
                         <PageTitle pageName="ПРОФИЛЬ"/>
-                        <Button buttonName="Редактировать" buttonClass="editBtn"/>
+                        {/* <Button buttonName="Редактировать" buttonClass="editBtn"/> */}
                     </div>
                     <div className="info-container">
                         <img src={avatar} alt="Avatar" className='avatar'></img>

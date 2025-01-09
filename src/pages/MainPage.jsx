@@ -9,7 +9,7 @@ import MainPageImg1 from "../img/main-page-1.png";
 import MainPageImg2 from "../img/main-page-2.png";
 
 export default function MainPage(props) {
-    const [rates, setRates] = useState([]); // Используем состояние для хранения данных
+    const [rates, setRates] = useState([]);
 
     useEffect(() => {
         const fetchRates = async () => {
@@ -31,8 +31,6 @@ export default function MainPage(props) {
 
         fetchRates();
     }, []);
-
-    console.log(rates);
 
     return (
         <div className="App MainPage">
@@ -60,10 +58,10 @@ export default function MainPage(props) {
                     В любой момент его можно сменить.</p>
                     <div className="rate-wrapper">
                         {
-                            rates.map(elem => {
+                            rates.map((elem, index)=> {
                                 const desc = elem["tariff_info"].split('\n')
                                 return (
-                                    <Rate name={ elem["tariff_name"] } description={ desc[0] } price={ elem["price"] } advantages={ desc.slice(1) }></Rate>
+                                    <Rate key={index} name={ elem["tariff_name"] } description={ desc[0] } price={ elem["price"] } advantages={ desc.slice(1) }></Rate>
                                 )
                             })
                         }
