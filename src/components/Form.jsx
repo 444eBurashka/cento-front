@@ -70,7 +70,7 @@ export default function Form(props) {
                     "email": formdata["email"],
                     "password": formdata["password1"],
                     "phone_number": "343",
-                    "studying_year": new Date().getFullYear(),
+                    "studying_year": 11,
                     "tariff_id": 1
                 };
     

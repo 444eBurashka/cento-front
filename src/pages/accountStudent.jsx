@@ -6,7 +6,19 @@ import Field from "../components/Field";
 import avatar from '../img/defaultAvatar.png';
 import SectionButton from "../components/SectionButton";
 
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setTokens, clearTokens } from '../store/store.js';
+
 export default function AccountTeacher(props) {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(clearTokens());
+        console.log("Выход из системы");
+        navigate('/');
+    };
     return (
         <div className="App">
             <Header />
@@ -15,6 +27,7 @@ export default function AccountTeacher(props) {
                     <div className="profile-container">
                         <PageTitle pageName="ПРОФИЛЬ"/>
                         {/* <Button buttonName="Редактировать" buttonClass="editBtn"/> */}
+                        <Button buttonName="Выйти" buttonClass="editBtn" onClick={handleLogout} />
                     </div>
                     <div className="info-container">
                         <img src={avatar} alt="Avatar" className='avatar'></img>
