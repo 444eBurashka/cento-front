@@ -80,9 +80,9 @@ export default function AccountTeacher(props) {
                         <SectionButton />
                     </div>
                     <br></br>
-                    <PageTitle pageName="Добавить ученика"/>
-                    <form onSubmit={handleAddStudent}>
-                        <Input textLabel="email ученика" placeholder="Введите email ученика" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <PageTitle pageName="ДОБАВИТЬ УЧЕНИКА"/>
+                    <form className="add-student-wrapper" onSubmit={handleAddStudent}>
+                        <Input textLabel="Email ученика" placeholder="Введите email ученика" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <Button buttonName="Добавить" buttonClass="editBtn" Type="submit" />
                     </form>
                     {/* <PageTitle pageName="ОБРАЗОВАНИЕ"/>

@@ -774,6 +774,7 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  width: 25%;
 }
 .rate-wrapper{
   display: flex;
@@ -781,6 +782,7 @@ h2 {
   gap: 32px;
   min-height: 712px;
   margin-bottom: 126px;
+  justify-content: center;
 }
 .rate-name{
   font-size: 40px;
@@ -939,4 +941,22 @@ h2 {
 .for-students-wrapper > div > div {
   display: flex;
   flex-direction: column;
+}
+
+.add-student-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-bottom: 60px;
+}
+.add-student-wrapper .Input {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+.add-student-wrapper .Input input {
+  width: 100%;
+}
+.add-student-wrapper .Button {
+  width: min-content;
 }
