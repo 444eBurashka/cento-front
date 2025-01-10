@@ -1,8 +1,12 @@
 export default function Input(props) {
-    return(
+    return (
         <div className="Input">
             <label>{props.textLabel}</label>
-            <input placeholder={props.placeholder}></input>
+            <input
+                placeholder={props.placeholder}
+                value={props.value}
+                onChange={props.onChange}
+            />
         </div>
-    )
+    );
 }
