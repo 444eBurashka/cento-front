@@ -1,42 +1,105 @@
+import React, { useEffect, useState } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
 import Select from "../components/Select";
 import Search from "../components/Search";
 import Task from "../components/Task";
-import taskImage from '../img/taskImage.png';
 import Button from "../components/Button";
+import { taskpics } from '../data';
 
-const answersData={
-    "math":'Математика', 
-    "info":"Информатика", 
-    "rus":"Русский язык"};
-const status='found';
-const formatExamAnswers={
-    "OGE":'ОГЭ', 
-    "EGE":"ЕГЭ"}
+const answersData = {
+    "math": 'Математика',
+    "info": "Информатика"
+};
+
+const subjectdct = {
+    'math': 2,
+    'info': 1
+}
+
+const tasktypes = {
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5
+};
+
+const status = 'found';
+const formatExamAnswers = {
+    "OGE": 'ОГЭ',
+    "EGE": "ЕГЭ"
+}
 
 export default function TasksBasePage(props) {
-    const addClassTasks = status==='found' ? '' : 'hide';
-    const addClassInfo = status==='found' ? 'hide' : '';
+    const [TASKS, setTASKS] = useState([]);
+    const [TASKTYPE, setTASKTYPE] = useState({});
+    const [selectedSubject, setSelectedSubject] = useState('');
+    const [selectedTaskType, setSelectedTaskType] = useState('');
+
+    useEffect(() => {
+        // Загрузка задач
+        fetch('http://31.129.111.117:8000/api/task/')
+            .then(response => response.json())
+            .then(data => setTASKS(data))
+            .catch(error => console.error('Ошибка при получении данных:', error));
+
+        // Загрузка типов задач
+        fetch('http://31.129.111.117:8000/api/task_type/')
+            .then(response => response.json())
+            .then(data => {
+                const taskTypeDict = {};
+                data.forEach(taskType => {
+                    taskTypeDict[taskType.id] = taskType.number_of_task;
+                });
+                setTASKTYPE(taskTypeDict);
+            })
+            .catch(error => console.error('Ошибка при получении типов задач:', error));
+    }, []);
+
+    const handleSubjectChange = (value) => {
+        setSelectedSubject(value);
+    };
+
+    const handleTaskTypeChange = (value) => {
+        setSelectedTaskType(value);
+    };
+
+    const filteredTasks = TASKS.filter(task => {
+        const subjectMatch = selectedSubject ? task.fk_exam_id === subjectdct[selectedSubject] : false;
+        const taskTypeMatch = selectedTaskType ? TASKTYPE[task.fk_code_of_type] == selectedTaskType : true;
+        const visibilityMatch = task.visibility === true;
+        return subjectMatch && taskTypeMatch && visibilityMatch;
+    });
+    console.log("Filtered Tasks:", filteredTasks);
+
+    const addClassTasks = status === 'found' ? '' : 'hide';
+    const addClassInfo = status === 'found' ? 'hide' : '';
+
     return (
         <div className="App">
             <Header />
             <div className="page-container-column">
-                <PageTitle pageName="БАНК ЗАДАНИЙ"/>
+                <PageTitle pageName="БАНК ЗАДАНИЙ" />
                 <div className="search-container">
-                    <Search textSearch="Поиск по номеру задания"></Search>
-                    <Select text='Поиск по разделам' answers={answersData}></Select>
+                    <Select text='Предмет' answers={answersData} onChange={handleSubjectChange}></Select>
+                    <Select text='Тип задания' answers={tasktypes} onChange={handleTaskTypeChange}></Select>
                 </div>
                 <div className={"notfoundTitle " + addClassInfo}>
                     <p>К СОЖАЛЕНИЮ, ПО ВАШЕМУ <br></br> ЗАПРОСУ НИЧЕГО НЕ НАЙДЕНО</p>
                 </div>
                 <div className={"base-tasks-list " + addClassTasks}>
-                    <Task id='1' description='На рисунке изображён график функции y=f(x). 
-                    На оси абсцисс отмечено девять точек: x1, x2, x3, x4, x5, x6, x7, x8, x9. 
-                    Найдите количество отмеченных точек, в которых производная функции f(x) отрицательна.' image={taskImage} answer="6"></Task>
-                    <Task id="2" description="На олимпиаде по математике 550 участников разместили в четырёх аудиториях. В первых трёх удалось разместить по 110 человек, оставшихся перевели в запасную аудиторию в другом корпусе. 
-                    Найдите вероятность того, что случайно выбранный участник писал олимпиаду в запасной аудитории." answer="6"></Task>
+                    {filteredTasks.map(task => (
+                        <Task
+                            key={task.id}
+                            num={TASKTYPE[task.fk_code_of_type]}
+                            id={task.id}
+                            description={task.description}
+                            image={taskpics[task.image_path]}
+                            answer={task.correct_answer}
+                        />
+                    ))}
                 </div>
             </div>
             <Footer />
@@ -52,5 +115,5 @@ export default function TasksBasePage(props) {
                 </div>
             </div>
         </div>
-      );
+    );
 }

@@ -26,7 +26,9 @@ export default function Header() {
                 <img alt="logo" src={logo} className='logo'></img>
             </Link>
             <div className='navigation'>
-                <Button buttonName="Банк заданий"/>
+                <Link to="/tasksBase">
+                    <Button buttonName="Банк заданий"/>
+                </Link>
                 <Button buttonName="Другие направления"/>
                 <Button buttonName="Контакты"/>
                 <Link to={urlLogin}>

@@ -11,7 +11,7 @@ export default function SectionButton(props) {
     return(
         <div style={divStyle} className="SectionButton">
             <img src={subjectIcon} alt="иконка предмета"></img>
-            <p>{props.label}</p>
+            <p>{props.label} ПН 16:00</p>
         </div>
     )
 }
