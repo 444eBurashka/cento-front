@@ -93,6 +93,9 @@ export default function AccountTeacher(props) {
                 <div>
                     <div className="profile-container">
                         <PageTitle pageName="ПРОФИЛЬ"/>
+                        <Link to="/variantsBase">
+                            <Button buttonName="Мои варианты" buttonClass="editBtn" />
+                        </Link>
                         <Link to="/myTasks">
                             <Button buttonName="Мои задания" buttonClass="editBtn" />
                         </Link>
