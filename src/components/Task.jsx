@@ -11,7 +11,7 @@ export default function Task(props) {
 
     return (
         <div className="Task">
-            <h4>Задание №{props.num} (id {props.id})</h4>
+            <h4>Задание №{props.num} (id {props.id}) {props.exam}</h4>
             <p>{props.description}</p>
             {props.image ? <img src={props.image} alt="Картинка к заданию"></img> : ''}
             <div className={"task-interface-container " + addClass}>

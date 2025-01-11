@@ -18,6 +18,11 @@ const subjectdct = {
     'info': 1
 }
 
+const subjectdctbyID = {
+    1: "Информатика",
+    2: 'Математика'
+}
+
 const tasktypes = {
     1: 1,
     2: 2,
@@ -37,6 +42,7 @@ export default function TasksBasePage(props) {
     const [TASKTYPE, setTASKTYPE] = useState({});
     const [selectedSubject, setSelectedSubject] = useState('');
     const [selectedTaskType, setSelectedTaskType] = useState('');
+    
 
     useEffect(() => {
         // Загрузка задач
@@ -98,6 +104,7 @@ export default function TasksBasePage(props) {
                             description={task.description}
                             image={taskpics[task.image_path]}
                             answer={task.correct_answer}
+                            exam={subjectdctbyID[task.fk_exam_id]}
                         />
                     ))}
                 </div>
