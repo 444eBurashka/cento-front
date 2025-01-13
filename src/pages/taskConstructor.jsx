@@ -60,27 +60,49 @@ export default function TaskConstructor(props) {
         };
         
         console.log(taskData);
-
-        try {
-            const response = await fetch('http://31.129.111.117:8000/api/create-task/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}` // Используем accessToken из состояния Redux
-                },
-                body: JSON.stringify(taskData)
-            });
-
-            if (!response.ok) {
-                throw new Error('Ошибка при отправке данных');
+        if (taskData.fk_code_of_type === '1' || taskData.fk_code_of_type === '2' || taskData.fk_code_of_type === '3' || taskData.fk_code_of_type === '4' || taskData.fk_code_of_type === '5') {
+            if (taskData.fk_exam_id && taskData.description && taskData.correct_answer) {
+                try {
+                    const response = await fetch('http://31.129.111.117:8000/api/create-task/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${accessToken}` // Используем accessToken из состояния Redux
+                        },
+                        body: JSON.stringify(taskData)
+                    });
+                
+                    if (!response.ok) {
+                        throw new Error('Ошибка при отправке данных');
+                    }
+                
+                    const result = await response.json();
+                    console.log('Успешно отправлено:', result);
+                    navigate("/myTasks");
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                }
             }
-
-            const result = await response.json();
-            console.log('Успешно отправлено:', result);
-            navigate("/myTasks");
-        } catch (error) {
-            console.error('Ошибка:', error);
+            else {
+                if (!taskData.fk_exam_id) {
+                    alert("Нужно выбрать предмет");
+                }
+                else if (!taskData.description) {
+                    alert("Описание не может быть пустым");
+                }
+                else if (!taskData.correct_answer) {
+                    alert("Правильный ответ не может быть пустым");
+                }
+            }            
         }
+        else {
+            alert("В нынешней версии сервиса доступны к добалению ТОЛЬКО первые 5 типов заданий по предметам информатика и математика");
+        }
+            
+    };
+
+    const uu = () => {
+        alert("Функционал добавления картинок будет доступен в следующих версиях");
     };
 
     return (
@@ -104,7 +126,7 @@ export default function TaskConstructor(props) {
                             <div className="task-constructor-image">
                                 <div className="task-constructor-image-title">
                                     <span>Изображение</span>
-                                    <button>+</button>
+                                    <button onClick={uu}>+</button>
                                 </div>
                                 <div className="task-constructor-image-wrapper">
                                     <img alt="Выберите изображение" src={defaultImage}></img>

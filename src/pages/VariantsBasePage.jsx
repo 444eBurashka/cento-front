@@ -28,78 +28,106 @@ export default function TasksBasePage(props) {
     const [studentId, setStudentId] = useState('');
     const accessToken = useSelector(state => state.auth.accessToken);
 
-    useEffect(() => {
-        const fetchVariants = async () => {
-            try {
-                const response = await fetch('http://31.129.111.117:8000/api/combined-variants/', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${accessToken}`
-                    }
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setVariants(data);
-                } else {
-                    console.error('Ошибка при получении вариантов');
+    const fetchVariants = async () => {
+        try {
+            const response = await fetch('http://31.129.111.117:8000/api/combined-variants/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
                 }
-            } catch (error) {
-                console.error('Ошибка при выполнении запроса:', error);
-            }
-        };
+            });
 
+            if (response.ok) {
+                const data = await response.json();
+                setVariants(data);
+            } else {
+                console.error('Ошибка при получении вариантов');
+            }
+        } catch (error) {
+            console.error('Ошибка при выполнении запроса:', error);
+        }
+    };
+
+    useEffect(() => {
         fetchVariants();
     }, [accessToken]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('http://31.129.111.117:8000/api/create-variant/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-            body: JSON.stringify({ 
-                fk_exam_id: 1,
-                tasks: taskIds.split(' '),
-                visibility: false,
-                time_limit: "01:30:00"
-             })
-        });
-
-        if (response.ok) {
-            alert('Вариант успешно создан!');
-            setTaskIds(''); // Очищаем поле ввода
-        } else {
-            alert('Ошибка при создании варианта');
+        if (taskIds) {
+            const response = await fetch('http://31.129.111.117:8000/api/create-variant/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: JSON.stringify({ 
+                    fk_exam_id: 1,
+                    tasks: taskIds.split(' '),
+                    visibility: false,
+                    time_limit: "01:30:00"
+                 })
+            });
+    
+            if (response.ok) {
+                alert('Вариант успешно создан!');
+                setTaskIds(''); // Очищаем поле ввода
+                fetchVariants(); // Обновляем список вариантов
+            } else {
+                alert("Ошибка в введенных id's");
+                console.log(response);
+            }
         }
+        else {
+            alert("Поле не может быть пустым");
+        }
+        
     };
 
     const handleHomeworkSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('http://31.129.111.117:8000/api/create-homework/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-            body: JSON.stringify({ 
-                variant_id: variantId,
-                student_email: studentId,
-                dead_line: "2025-01-29T23:59:59"
-             })
-        });
-
-        if (response.ok) {
-            alert('Домашнее задание успешно создано!');
-            setVariantId(''); // Очищаем поле ввода
-            setStudentId(''); // Очищаем поле ввода
-        } else {
-            alert('Ошибка при создании домашнего задания');
+        if (variantId && studentId) {
+            const response = await fetch('http://31.129.111.117:8000/api/create-homework/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: JSON.stringify({ 
+                    variant_id: variantId,
+                    student_email: studentId,
+                    dead_line: "2025-01-29T23:59:59"
+                 })
+            });
+    
+            if (response.ok) {
+                alert('Домашнее задание успешно создано!');
+                setVariantId(''); // Очищаем поле ввода
+                setStudentId(''); // Очищаем поле ввода
+                fetchVariants(); // Обновляем список вариантов
+            } else {
+                if (response.status === 404) {
+                    alert('Ученик или вариант не найден');
+                }
+                else if (response.status === 403) {
+                    alert('Неправильное id варианта или почта ученика (прикрепить можно только СВОЙ вариант и только к СВОЕМУ ученику)');
+                }
+                else {
+                    alert('Ошибка при создании домашнего задания');
+                    console.log(response);
+                }
+            }
+        }
+        else {
+            if (!variantId) {
+                alert('Поле с id варианта не может быть пустым');
+            }
+            else if (!studentId) {
+                alert('Поле с email ученика не может быть пустым');
+            }
         }
     };
 
@@ -114,7 +142,7 @@ export default function TasksBasePage(props) {
                 <form onSubmit={handleSubmit}>
                     <Input
                         textLabel="Введите id заданий"
-                        placeholder="id через пробел"
+                        placeholder="id's через пробел"
                         value={taskIds}
                         onChange={(e) => setTaskIds(e.target.value)}
                     />
