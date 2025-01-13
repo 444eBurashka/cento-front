@@ -107,7 +107,7 @@ export default function TasksBasePage(props) {
     const addClassInfo = status === 'found' ? 'hide' : '';
 
     return (
-        <div className="App">
+        <div className="App variant-base-container">
             <Header />
             <div className="page-container-column">
                 <PageTitle pageName="ДОБАВИТЬ ВАРИАНТ" />

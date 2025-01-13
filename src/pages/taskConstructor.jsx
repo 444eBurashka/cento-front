@@ -111,8 +111,8 @@ export default function TaskConstructor(props) {
                                 </div>
                             </div>
                         </div>
-                        <p>Правильный ответ</p>
-                        <input value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)}></input>
+                        <p>Правильный ответ
+                        <input value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)}></input></p>
                     </div>
                 </form>
             </div>

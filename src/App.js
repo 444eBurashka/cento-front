@@ -13,12 +13,14 @@ import VariantsBasePage from './pages/VariantsBasePage';
 import TaskConstructor from './pages/taskConstructor';
 import VariantPage from './pages/variant';
 import HomeworPage from './pages/homework';
+import FuturePage from './pages/futurePage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<MainPage />} />
+        <Route path="future" element={<FuturePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="registration" element={<RegisterPage />} />
         <Route path="accountTeacher" element={<AccountTeacher />} />

@@ -122,6 +122,7 @@ p {
   margin-top: 64px;
   margin-left: 96px;
   margin-right: 96px;
+  margin-bottom: 80px;
   display: flex;
   align-items: center;
 }
@@ -130,6 +131,7 @@ p {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
 /*Стили кнопки*/
@@ -249,7 +251,6 @@ p {
 .page-container-column {
   flex-direction: column;
   gap: 58px;
-  margin-top: 90px;
   margin-bottom: 60px;
 }
 
@@ -281,6 +282,9 @@ h2 {
 .Form div > Button {
   font-size: 20px;
   color: #77A248;
+}
+.Form > Button {
+  align-self: center;
 }
 .login {
   margin-right: 196px;
@@ -570,6 +574,7 @@ h2 {
 }
 
 .task-constructor > div > input,
+.task-constructor > p > input,
 .task-constructor > div > span > input,
 .variant-constructor-first-step > input {
   background-color: transparent;
@@ -959,4 +964,38 @@ h2 {
 }
 .add-student-wrapper .Button {
   width: min-content;
+}
+
+.account-btn:active {
+  background-color: #617C44;
+  color: #ffffff;
+}
+.account-btn:hover {
+  border: 2px solid #000000;
+}
+
+.editBtn:active {
+  background-color: #CCFF95;
+  border: none;
+}
+.editBtn:hover {
+  border-color: #617C44;
+}
+
+.page-container-column > a {
+  width:fit-content;
+}
+
+.variant-base-container > div > form{
+  display: flex;
+  flex-direction: column;
+}
+
+.variant-base-container > div > form > .Button{
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+.future-page {
+  font-size: 36px;
 }
