@@ -29,8 +29,12 @@ export default function Header() {
                 <Link to="/tasksBase">
                     <Button buttonName="Банк заданий"/>
                 </Link>
-                <Button buttonName="Другие направления"/>
-                <Button buttonName="Контакты"/>
+                <Link to="/future">
+                    <Button buttonName="Другие направления"/>
+                </Link>
+                <Link to="/future">
+                    <Button buttonName="Контакты"/>
+                </Link>
                 <Link to={urlLogin}>
                     <Button buttonName="Личный кабинет" buttonClass="account-btn"/>
                 </Link>

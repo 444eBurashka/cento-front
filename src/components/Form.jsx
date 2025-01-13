@@ -34,6 +34,9 @@ export default function Form(props) {
                 .then(response => response.json())
                 .then(tokens => {
                     console.log('Tokens:', tokens);
+                    if (tokens.detail === "No active account found with the given credentials") {
+                        alert("Неправильный логин или пароль");
+                    }
                     if (tokens.role === "ученик") {
                         const dct = {
                             access: tokens.access,
@@ -52,7 +55,9 @@ export default function Form(props) {
                         navigate('/accountTeacher'); 
                     }
                 })
-                .catch(error => console.error(error));
+                .catch(error => {
+                    alert("Неправильный логин или пароль");
+                });
         }
         else {
             const formdata = {
@@ -106,21 +111,56 @@ export default function Form(props) {
                                 .then(response => response.json())
                                 .then(tokens => {
                                     if (formdata.role === "Учитель") {
-                                        dispatch(setTokens(tokens.access, tokens.refresh, '/accountTeacher'));
+                                        const dct = {
+                                            access: tokens.access,
+                                            refresh: tokens.refresh,
+                                            role: '/accountTeacher'
+                                        }
+                                        dispatch(setTokens(dct));
                                         navigate('/accountTeacher');
                                     } else if (formdata.role === "Ученик") {
-                                        dispatch(setTokens(tokens.access, tokens.refresh, '/accountStudent'));
+                                        const dct = {
+                                            access: tokens.access,
+                                            refresh: tokens.refresh,
+                                            role: '/accountStudent'
+                                        }
+                                        dispatch(setTokens(dct));
                                         navigate('/accountStudent'); 
                                     }
                                 })
                                 .catch(error => console.error(error));
                         }
+                        else {
+                            if (data.email) {
+                                alert("Проверьте правильность ввода email");
+                            }
+                            else if (data.username) {
+                                alert("Проверьте правильность ввода логина");
+                            }
+                            else {
+                                alert("Проверьте правильность введенных данных");
+                            }
+                        }
                     })
-                    .catch(error => console.error(error));
+                    .catch(error => console.error(error.json()));
     
-                e.target.reset();
+                // e.target.reset();
             } else {
-                alert("Проверьте введенные данные");
+                if (!formdata["username"] || !formdata["email"]) {
+                    alert("Поля не могут быть пустыми");
+                }
+                else if (!(formdata["password1"] === formdata["password2"])) {
+                    alert("Пароли не совпадают");
+                }
+                else if (!(formdata["role"] === "Ученик" || formdata["role"] === "Учитель")) {
+                    alert("Неправильная роль");
+                }
+                else if (!formdata["r"]) {
+                    alert("Нужно дать согласие");
+                }
+                else {
+                    alert("Что-то пошло не так");
+                }
             }
         }
 
@@ -142,7 +182,7 @@ export default function Form(props) {
             </div>
             <div className={"submit-container " + isSubmit}>
                 <input id="submit" type="checkbox"></input>
-                <label htmlFor="scales">Даю согласие на обработку персональных данных в соответствии с <a href="t.me/matveykhorev">пользовательским соглашением</a></label>
+                <label htmlFor="scales">Даю согласие на обработку персональных данных в соответствии с <a target="_blank" href="/future">пользовательским соглашением</a></label>
             </div>
             <Button buttonName={Data.submitBtnText} buttonClass="account-btn" Type="submit" />
             <div className='addInfo'>

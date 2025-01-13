@@ -8,8 +8,16 @@ import CheckBox from "../components/CheckBox";
 import MainPageImg1 from "../img/main-page-1.png";
 import MainPageImg2 from "../img/main-page-2.png";
 
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 export default function MainPage(props) {
+    const accessToken = useSelector(state => state.auth.accessToken);
+    const role = useSelector(state => state.auth.role);
     const [rates, setRates] = useState([]);
+    const navigate = useNavigate();
+
+    console.log(accessToken, role);
 
     useEffect(() => {
         const fetchRates = async () => {
@@ -32,6 +40,15 @@ export default function MainPage(props) {
         fetchRates();
     }, []);
 
+    const tologin = () => {
+        if (accessToken && role) {
+            navigate(role);
+        }
+        else {
+            navigate('/login')
+        }
+    };
+
     return (
         <div className="App MainPage">
             <Header />
@@ -46,7 +63,7 @@ export default function MainPage(props) {
                     <img src={MainPageImg1} alt="Здесь первая важная картинка"></img>
                 </div>
                 <div className="buttons-wrapper">
-                    <Button buttonClass="account-btn" buttonName="самое время начать"></Button>
+                    <Button buttonClass="account-btn" buttonName="самое время начать" onClick={tologin}></Button>
                     <a href="/exam-simulator" className="exam-simulator">
                         <p>СИМУЛЯТОР КЕГЭ</p>
                         <span>– сервис, позволяющий имитировать процесс <br></br> компьютерного единого государственного экзамена</span>
@@ -78,7 +95,7 @@ export default function MainPage(props) {
                             <CheckBox elem="Фишка 2, где много текста и необходим перенос"></CheckBox>  
                             <CheckBox elem="Фишка 3"></CheckBox>  
                             <CheckBox elem="Фишка 4, где много текста и необходим перенос"></CheckBox> 
-                            <Button buttonName="Присоединиться к обучению" buttonClass="account-btn"></Button>
+                            <Button buttonName="Присоединиться к обучению" buttonClass="account-btn" onClick={tologin}></Button>
                         </div>
                     </div>
                     <img src={MainPageImg2} alt="Вторая важная картинка"></img>

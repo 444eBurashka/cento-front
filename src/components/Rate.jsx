@@ -1,5 +1,6 @@
 import Button from "./Button";
 import CheckBox from "./CheckBox";
+import { Link } from "react-router-dom";
 
 export default function Rate(props) {
     return (
@@ -17,7 +18,9 @@ export default function Rate(props) {
                     )
                 })
             }
-            <Button buttonName="Попробовать" buttonClass="account-btn"></Button>
+            <Link to="/future">
+                <Button buttonName="Попробовать" buttonClass="account-btn"></Button>
+            </Link>
         </div>
     )
 }
