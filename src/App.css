@@ -211,12 +211,16 @@ p {
 .Footer {
   display: flex;
   justify-content: space-between;
+  margin-top: 80px;
   margin-bottom: 48px;
   margin-left: 96px;
   margin-right: 96px;
   align-items: flex-end;
+  gap: 10px;
 }
 .Footer Button {
+  display: flex;
+  align-items: center;
   border-radius: 20px;
 }
 .footer-btn1 {
@@ -224,7 +228,7 @@ p {
   background-color: #CCFF95;
 }
 .footer-btn2 {
-  padding: 22px 142px;
+  padding: 22px 70px;
   border: 4px solid #444444;
   height: 89px;
 }
@@ -971,7 +975,8 @@ h2 {
   color: #ffffff;
 }
 .account-btn:hover {
-  opacity: 0.6;
+  background-color: #559411;
+  color: #fff;
 }
 
 .editBtn:active {
@@ -1001,7 +1006,7 @@ h2 {
 }
 
 .navigation > a > .Button:hover {
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.4));
 }
 
 .Variant:hover {
@@ -1022,4 +1027,31 @@ h2 {
 
 .footer-btn4:hover {
   opacity: 0.6;
+}
+
+.alert-popup {
+  position: fixed;
+  background-color: rgba(102, 196, 2, 0.8);
+  width: 20%;
+  height: 10%;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000000;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 15px;
+  padding: 0px 30px;
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

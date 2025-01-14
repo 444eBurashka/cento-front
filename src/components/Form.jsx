@@ -2,9 +2,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from "./Button";
 import Input from "./Input";
 import { loginData, registerData } from "../data.js";
-
+import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTokens, clearTokens } from '../store/store.js';
+
+const Popup = (props) => {
+    return (
+        <div className='alert-popup'>{props.text}</div>
+    );
+};
+  
+const insertElementAtEnd = (text) => {
+    const newElement = document.createElement('div');
+    document.body.appendChild(newElement);
+    ReactDOM.render(<Popup text={text}/>, newElement);
+    newElement.addEventListener('animationend', () => {
+        newElement.remove();
+      });
+};
 
 export default function Form(props) {
     const Data = props.formType === "login" ? loginData : registerData;
@@ -35,7 +50,8 @@ export default function Form(props) {
                 .then(tokens => {
                     console.log('Tokens:', tokens);
                     if (tokens.detail === "No active account found with the given credentials") {
-                        alert("Неправильный логин или пароль");
+                        // alert("Неправильный логин или пароль");
+                        insertElementAtEnd("Неправильный логин или пароль");
                     }
                     if (tokens.role === "ученик") {
                         const dct = {
@@ -132,13 +148,16 @@ export default function Form(props) {
                         }
                         else {
                             if (data.email) {
-                                alert("Проверьте правильность ввода email");
+                                // alert("Проверьте правильность ввода email");
+                                insertElementAtEnd("Проверьте правильность ввода email");
                             }
                             else if (data.username) {
-                                alert("Проверьте правильность ввода логина");
+                                // alert("Проверьте правильность ввода логина");
+                                insertElementAtEnd("Проверьте правильность ввода логина");
                             }
                             else {
-                                alert("Проверьте правильность введенных данных");
+                                // alert("Проверьте правильность введенных данных");
+                                insertElementAtEnd("Проверьте правильность введенных данных");
                             }
                         }
                     })
@@ -147,19 +166,24 @@ export default function Form(props) {
                 // e.target.reset();
             } else {
                 if (!formdata["username"] || !formdata["email"]) {
-                    alert("Поля не могут быть пустыми");
+                    // alert("Поля не могут быть пустыми");
+                    insertElementAtEnd("Поля не могут быть пустыми");
                 }
                 else if (!(formdata["password1"] === formdata["password2"])) {
-                    alert("Пароли не совпадают");
+                    // alert("Пароли не совпадают");
+                    insertElementAtEnd("Пароли не совпадают");
                 }
                 else if (!(formdata["role"] === "Ученик" || formdata["role"] === "Учитель")) {
-                    alert("Неправильная роль");
+                    // alert("Неправильная роль");
+                    insertElementAtEnd("Неправильная роль");
                 }
                 else if (!formdata["r"]) {
-                    alert("Нужно дать согласие");
+                    // alert("Нужно дать согласие");
+                    insertElementAtEnd("Нужно дать согласие");
                 }
                 else {
-                    alert("Что-то пошло не так");
+                    // alert("Что-то пошло не так");
+                    insertElementAtEnd("Что-то пошло не так");
                 }
             }
         }
