@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Header from "../components/Header";
+import ReactDOM from 'react-dom';
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
 import Search from "../components/Search";
@@ -20,6 +21,21 @@ const students = {
     "2": "Петров",
     "3": "Сидоров"
 }
+
+const Popup = (props) => {
+    return (
+        <div className={'alert-popup ' + props.popupClass}>{props.text}</div>
+    );
+};
+  
+const insertElementAtEnd = (text, type) => {
+    const newElement = document.createElement('div');
+    document.body.appendChild(newElement);
+    ReactDOM.render(<Popup popupClass={type} text={text}/>, newElement);
+    newElement.addEventListener('animationend', () => {
+        newElement.remove();
+      });
+};
 
 export default function TasksBasePage(props) {
     const [taskIds, setTaskIds] = useState('');
@@ -72,16 +88,19 @@ export default function TasksBasePage(props) {
             });
     
             if (response.ok) {
-                alert('Вариант успешно создан!');
+                // alert('Вариант успешно создан!');
+                insertElementAtEnd("Вариант успешно создан!", 'correct');
                 setTaskIds(''); // Очищаем поле ввода
                 fetchVariants(); // Обновляем список вариантов
             } else {
-                alert("Ошибка в введенных id's");
+                // alert("Ошибка в введенных id's");
+                insertElementAtEnd("Ошибка в введенных id's", 'incorrect');
                 console.log(response);
             }
         }
         else {
-            alert("Поле не может быть пустым");
+            // alert("Поле не может быть пустым");
+            insertElementAtEnd("Поле не может быть пустым", 'incorrect');
         }
         
     };
@@ -104,19 +123,23 @@ export default function TasksBasePage(props) {
             });
     
             if (response.ok) {
-                alert('Домашнее задание успешно создано!');
+                // alert('Домашнее задание успешно создано!');
+                insertElementAtEnd("Домашнее задание успешно создано!", 'correct');
                 setVariantId(''); // Очищаем поле ввода
                 setStudentId(''); // Очищаем поле ввода
                 fetchVariants(); // Обновляем список вариантов
             } else {
                 if (response.status === 404) {
-                    alert('Ученик или вариант не найден');
+                    // alert('Ученик или вариант не найден');
+                    insertElementAtEnd("Ученик или вариант не найден", 'incorrect');
                 }
                 else if (response.status === 403) {
-                    alert('Неправильное id варианта или почта ученика (прикрепить можно только СВОЙ вариант и только к СВОЕМУ ученику)');
+                    // alert('Неправильное id варианта или почта ученика (прикрепить можно только СВОЙ вариант и только к СВОЕМУ ученику)');
+                    insertElementAtEnd("Неправильное id варианта или почта ученика (прикрепить можно только СВОЙ вариант и только к СВОЕМУ ученику)",'incorrect');
                 }
                 else {
-                    alert('Ошибка при создании домашнего задания');
+                    // alert('Ошибка при создании домашнего задания');
+                    insertElementAtEnd("Ошибка при создании домашнего задания", 'incorrect');
                     console.log(response);
                 }
             }

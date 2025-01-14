@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
@@ -29,6 +30,21 @@ const getCount = count => {
         content.push(<textarea key={i}></textarea>);
     }
     return content;
+};
+
+const Popup = (props) => {
+    return (
+        <div className={'alert-popup ' + props.popupClass}>{props.text}</div>
+    );
+};
+  
+const insertElementAtEnd = (text, type) => {
+    const newElement = document.createElement('div');
+    document.body.appendChild(newElement);
+    ReactDOM.render(<Popup popupClass={type} text={text}/>, newElement);
+    newElement.addEventListener('animationend', () => {
+        newElement.remove();
+      });
 };
 
 export default function TaskConstructor(props) {
@@ -85,24 +101,29 @@ export default function TaskConstructor(props) {
             }
             else {
                 if (!taskData.fk_exam_id) {
-                    alert("Нужно выбрать предмет");
+                    // alert("Нужно выбрать предмет");
+                    insertElementAtEnd("Нужно выбрать предмет", "incorrect");
                 }
                 else if (!taskData.description) {
-                    alert("Описание не может быть пустым");
+                    // alert("Описание не может быть пустым");
+                    insertElementAtEnd("Описание не может быть пустым", "incorrect");
                 }
                 else if (!taskData.correct_answer) {
-                    alert("Правильный ответ не может быть пустым");
+                    // alert("Правильный ответ не может быть пустым");
+                    insertElementAtEnd("Правильный ответ не может быть пустым", "incorrect");
                 }
             }            
         }
         else {
-            alert("В нынешней версии сервиса доступны к добалению ТОЛЬКО первые 5 типов заданий по предметам информатика и математика");
+            // alert("В нынешней версии сервиса доступны к добалению ТОЛЬКО первые 5 типов заданий по предметам информатика и математика");
+            insertElementAtEnd("В нынешней версии сервиса доступны к добалению ТОЛЬКО первые 5 типов заданий по предметам информатика и математика", "medium");
         }
             
     };
 
     const uu = () => {
-        alert("Функционал добавления картинок будет доступен в следующих версиях");
+        // alert("Функционал добавления картинок будет доступен в следующих версиях");
+        insertElementAtEnd("Функционал добавления картинок будет доступен в следующих версиях", "medium");
     };
 
     return (

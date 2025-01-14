@@ -1031,7 +1031,6 @@ h2 {
 
 .alert-popup {
   position: fixed;
-  background-color: rgba(102, 196, 2, 0.8);
   width: 20%;
   height: 10%;
   bottom: 10px;
@@ -1046,6 +1045,18 @@ h2 {
   padding: 0px 30px;
   animation: fadeOut 5s forwards;
 }
+
+.alert-popup.correct {
+  background-color: rgba(102, 196, 2, 0.8);
+}
+.alert-popup.incorrect {
+  background-color: rgba(196, 73, 2, 0.842);
+  color: #ffffff;
+}
+.alert-popup.medium {
+  background-color: rgba(0, 0, 0, 0.226);
+}
+
 
 @keyframes fadeOut {
   0% {

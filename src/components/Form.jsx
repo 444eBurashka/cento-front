@@ -8,14 +8,14 @@ import { setTokens, clearTokens } from '../store/store.js';
 
 const Popup = (props) => {
     return (
-        <div className='alert-popup'>{props.text}</div>
+        <div className={'alert-popup ' + props.popupClass}>{props.text}</div>
     );
 };
   
-const insertElementAtEnd = (text) => {
+const insertElementAtEnd = (text, type) => {
     const newElement = document.createElement('div');
     document.body.appendChild(newElement);
-    ReactDOM.render(<Popup text={text}/>, newElement);
+    ReactDOM.render(<Popup popupClass={type} text={text}/>, newElement);
     newElement.addEventListener('animationend', () => {
         newElement.remove();
       });
@@ -51,7 +51,7 @@ export default function Form(props) {
                     console.log('Tokens:', tokens);
                     if (tokens.detail === "No active account found with the given credentials") {
                         // alert("Неправильный логин или пароль");
-                        insertElementAtEnd("Неправильный логин или пароль");
+                        insertElementAtEnd("Неправильный логин или пароль", "incorrect");
                     }
                     if (tokens.role === "ученик") {
                         const dct = {
@@ -72,7 +72,7 @@ export default function Form(props) {
                     }
                 })
                 .catch(error => {
-                    alert("Неправильный логин или пароль");
+                    alert("Неправильный логин или пароль", "incorrect");
                 });
         }
         else {
@@ -149,15 +149,15 @@ export default function Form(props) {
                         else {
                             if (data.email) {
                                 // alert("Проверьте правильность ввода email");
-                                insertElementAtEnd("Проверьте правильность ввода email");
+                                insertElementAtEnd("Проверьте правильность ввода email", "incorrect");
                             }
                             else if (data.username) {
                                 // alert("Проверьте правильность ввода логина");
-                                insertElementAtEnd("Проверьте правильность ввода логина");
+                                insertElementAtEnd("Проверьте правильность ввода логина", "incorrect");
                             }
                             else {
                                 // alert("Проверьте правильность введенных данных");
-                                insertElementAtEnd("Проверьте правильность введенных данных");
+                                insertElementAtEnd("Проверьте правильность введенных данных", "incorrect");
                             }
                         }
                     })
@@ -167,23 +167,23 @@ export default function Form(props) {
             } else {
                 if (!formdata["username"] || !formdata["email"]) {
                     // alert("Поля не могут быть пустыми");
-                    insertElementAtEnd("Поля не могут быть пустыми");
+                    insertElementAtEnd("Поля не могут быть пустыми", "incorrect");
                 }
                 else if (!(formdata["password1"] === formdata["password2"])) {
                     // alert("Пароли не совпадают");
-                    insertElementAtEnd("Пароли не совпадают");
+                    insertElementAtEnd("Пароли не совпадают", "incorrect");
                 }
                 else if (!(formdata["role"] === "Ученик" || formdata["role"] === "Учитель")) {
                     // alert("Неправильная роль");
-                    insertElementAtEnd("Неправильная роль");
+                    insertElementAtEnd("Неправильная роль", "incorrect");
                 }
                 else if (!formdata["r"]) {
                     // alert("Нужно дать согласие");
-                    insertElementAtEnd("Нужно дать согласие");
+                    insertElementAtEnd("Нужно дать согласие", "incorrect");
                 }
                 else {
                     // alert("Что-то пошло не так");
-                    insertElementAtEnd("Что-то пошло не так");
+                    insertElementAtEnd("Что-то пошло не так", "incorrect");
                 }
             }
         }
