@@ -39,41 +39,46 @@ export default function Form(props) {
                 "password": e.target[1].value,
             };
 
-            fetch(tokenUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formdata)
-            })
-                .then(response => response.json())
-                .then(tokens => {
-                    console.log('Tokens:', tokens);
-                    if (tokens.detail === "No active account found with the given credentials") {
-                        // alert("Неправильный логин или пароль");
-                        insertElementAtEnd("Неправильный логин или пароль", "incorrect");
-                    }
-                    if (tokens.role === "ученик") {
-                        const dct = {
-                            access: tokens.access,
-                            refresh: tokens.refresh,
-                            role: '/accountStudent'
-                        }
-                        dispatch(setTokens(dct));
-                        navigate('/accountStudent');
-                    } else if (tokens.role === "учитель") {
-                        const dct = {
-                            access: tokens.access,
-                            refresh: tokens.refresh,
-                            role: '/accountTeacher'
-                        }
-                        dispatch(setTokens(dct));
-                        navigate('/accountTeacher'); 
-                    }
+            if (formdata.username && formdata.password) {
+                fetch(tokenUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formdata)
                 })
-                .catch(error => {
-                    alert("Неправильный логин или пароль", "incorrect");
-                });
+                    .then(response => response.json())
+                    .then(tokens => {
+                        console.log('Tokens:', tokens);
+                        if (tokens.detail === "No active account found with the given credentials") {
+                            // alert("Неправильный логин или пароль");
+                            insertElementAtEnd("Неправильный логин или пароль", "incorrect");
+                        }
+                        if (tokens.role === "ученик") {
+                            const dct = {
+                                access: tokens.access,
+                                refresh: tokens.refresh,
+                                role: '/accountStudent'
+                            }
+                            dispatch(setTokens(dct));
+                            navigate('/accountStudent');
+                        } else if (tokens.role === "учитель") {
+                            const dct = {
+                                access: tokens.access,
+                                refresh: tokens.refresh,
+                                role: '/accountTeacher'
+                            }
+                            dispatch(setTokens(dct));
+                            navigate('/accountTeacher'); 
+                        }
+                    })
+                    .catch(error => {
+                        alert("Неправильный логин или пароль", "incorrect");
+                    });
+            }
+            else {
+                insertElementAtEnd("Поля не могут быть пустыми", "incorrect");
+            }
         }
         else {
             const formdata = {
