@@ -6,11 +6,43 @@ import Button from "../components/Button";
 import Field from "../components/Field";
 import SectionButton from "../components/SectionButton.jsx";
 import avatar from '../img/defaultAvatar.png';
-
+import Select from '../components/Select.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTokens, clearTokens } from '../store/store.js';
 import Input from "../components/Input.jsx";
+
+const closeBtn = () => {
+    const fullForm = document.getElementsByClassName('popup-overlay');
+};
+const openOverlay = () => {
+    const fullForm = document.querySelector('.popup-overlay');
+    console.log(fullForm);
+    fullForm.classList.remove('hide');
+    const closeBtn = document.querySelector('.cross-btn');
+    closeBtn.addEventListener('click', () => {
+        fullForm.classList.add('hide'); 
+    });
+}
+
+const answersData = {
+    "math": 'Математика',
+    "info": "Информатика"
+};
+
+const formatExamAnswers = {
+    "OGE": 'ОГЭ',
+    "EGE": "ЕГЭ"
+}
+
+function handleClick(e) {
+    e.preventDefault();
+    closeBtn();
+}
+function handleClick1(e) {
+    e.preventDefault();
+    openOverlay();
+}
 
 export default function AccountTeacher(props) {
     const accessToken = useSelector(state => state.auth.accessToken);
@@ -104,6 +136,9 @@ export default function AccountTeacher(props) {
                             </div>
                         </div>
                         <div className='profile-container-interface'>
+                            <Link to="/myTasks">
+                                <Button buttonName="Назначить урок" buttonClass="editBtn" onClick={handleClick1}/>
+                            </Link>
                             <Link to="/variantsBase">
                                 <Button buttonName="Мои варианты" buttonClass="editBtn" />
                             </Link>
@@ -130,6 +165,18 @@ export default function AccountTeacher(props) {
                 </div>
             </div>
             <Footer />
+            <div className="popup-overlay hide">
+                <div className="popup">
+                    <div className="title-wrapper">
+                        <p>Выберите когда будет урок и с кем</p>
+                        <button className="cross-btn" onClick={handleClick}></button>
+                    </div>
+                    <Select text="Выберите ученика" answers={formatExamAnswers}></Select>
+                    <input type="date" id="date" name="date"></input>
+                    <Button buttonClass="account-btn" buttonName="Сохранить формат"></Button>
+                </div>
+            </div>
         </div>
     );
 }
+
