@@ -86,27 +86,31 @@ export default function AccountTeacher(props) {
     };
 
     return (
-        <div className="App">
+        <div className="App accountTeacher">
             <Header />
             <br></br>
             <div className="page-container">
                 <div>
                     <div className="profile-container">
                         <PageTitle pageName="ПРОФИЛЬ"/>
-                        <Link to="/variantsBase">
-                            <Button buttonName="Мои варианты" buttonClass="editBtn" />
-                        </Link>
-                        <Link to="/myTasks">
-                            <Button buttonName="Мои задания" buttonClass="editBtn" />
-                        </Link>
-                        <Button buttonName="Выйти" buttonClass="editBtn" onClick={handleLogout} />
                     </div>
                     <div className="info-container">
-                        <img src={avatar} alt="Avatar" className='avatar'></img>
-                        <div className="fields-container">
-                            <Field fieldLabel="Логин" fieldText={userData.login}/>
-                            <Field fieldLabel="Почта" fieldText={userData.email}/>
-                            <Field fieldLabel="Специализация" fieldText={userData.specialization}/>
+                        <div className='info-container-left'>
+                            <img src={avatar} alt="Avatar" className='avatar'></img>
+                            <div className="fields-container">
+                                <Field fieldLabel="Логин" fieldText={userData.login}/>
+                                <Field fieldLabel="Почта" fieldText={userData.email}/>
+                                <Field fieldLabel="Специализация" fieldText={userData.specialization}/>
+                            </div>
+                        </div>
+                        <div className='profile-container-interface'>
+                            <Link to="/variantsBase">
+                                <Button buttonName="Мои варианты" buttonClass="editBtn" />
+                            </Link>
+                            <Link to="/myTasks">
+                                <Button buttonName="Мои задания" buttonClass="editBtn" />
+                            </Link>
+                            <Button buttonName="Выйти" buttonClass="editBtn" onClick={handleLogout} />
                         </div>
                     </div>
                     <PageTitle pageName="УЧЕНИКИ"/>

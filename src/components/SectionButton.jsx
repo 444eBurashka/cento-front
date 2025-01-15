@@ -4,7 +4,8 @@ const divStyle = {
     color: 'white',
     backgroundImage: 'url(' + imgUrl + ')',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain'
+    backgroundSize: 'contain',
+    boxSizing: 'border-box'
   };
 
 export default function SectionButton(props) {
