@@ -96,27 +96,50 @@ export default function AccountTeacher(props) {
         e.preventDefault();
         console.log(email);
         try {
-            const response = await fetch('http://31.129.111.117:8000/api/add-student/', {
+            const addStudentResponse = await fetch('http://31.129.111.117:8000/api/add-student/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + accessToken,
                 },
-                body: JSON.stringify({ "student_email": email, }),
+                body: JSON.stringify({ "student_email": email }),
             });
-
-            if (!response.ok) {
+    
+            if (!addStudentResponse.ok) {
                 throw new Error('Ошибка при добавлении ученика');
             }
+    
+            const addStudentData = await addStudentResponse.json();
+            console.log('Ученик успешно добавлен:', addStudentData);
+    
 
-            const data = await response.json();
-            console.log('Ученик успешно добавлен:', data);
+            const profileResponse = await fetch('http://31.129.111.117:8000/api/profile/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken,
+                },
+            });
+    
+            if (!profileResponse.ok) {
+                throw new Error('Ошибка при получении обновленных данных профиля');
+            }
+    
+            const profileData = await profileResponse.json();
+            console.log('Обновленные данные профиля:', profileData);
+
+            setUserData({
+                login: profileData.username,
+                email: profileData.email,
+                specialization: profileData.role,
+                students: profileData.students,
+            });
+    
         } catch (error) {
             console.error('Ошибка:', error);
         }
         e.target.reset();
     };
-
     return (
         <div className="App accountTeacher">
             <Header />

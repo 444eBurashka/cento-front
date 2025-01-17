@@ -26,6 +26,7 @@ export default function HomeworPage(props) {
                 }
 
                 const data = await response.json();
+                console.log(data)
                 setHomeworkData(data);
             } catch (error) {
                 setError(error.message);
@@ -46,7 +47,7 @@ export default function HomeworPage(props) {
                 <PageTitle pageName="ДОМАШНИЕ ЗАДАНИЯ" />
                 <div className="base-tasks-list">
                     {homeworkData.map((task, index) => (
-                        <TaskInfoWrapper key={index} taskName={task.fk_variant_id} taskDeadline={task.dead_line} taskStatus={task.status} variantID={task.fk_variant_id}/>
+                        <TaskInfoWrapper key={index} taskName={task.fk_variant_id} taskDeadline={task.dead_line} taskStatus={task.status} variantID={task.fk_variant_id} points={task.earned_points}/>
                     ))}
                 </div>
             </div>

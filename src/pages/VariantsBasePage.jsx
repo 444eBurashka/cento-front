@@ -146,10 +146,12 @@ export default function TasksBasePage(props) {
         }
         else {
             if (!variantId) {
-                alert('Поле с id варианта не может быть пустым');
+                // alert('Поле с id варианта не может быть пустым');
+                insertElementAtEnd("Поле с id варианта не может быть пустым", 'incorrect');
             }
             else if (!studentId) {
-                alert('Поле с email ученика не может быть пустым');
+                // alert('Поле с email ученика не может быть пустым');
+                insertElementAtEnd("Поле с email ученика не может быть пустым", 'incorrect');
             }
         }
     };
