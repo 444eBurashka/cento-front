@@ -11,10 +11,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTokens, clearTokens } from '../store/store.js';
 import Input from "../components/Input.jsx";
+import ReactDOM from 'react-dom';
 
 const closeBtn = () => {
     const fullForm = document.getElementsByClassName('popup-overlay');
 };
+
+const Popup = (props) => {
+    return (
+        <div className={'alert-popup ' + props.popupClass}>{props.text}</div>
+    );
+};
+
+const insertElementAtEnd = (text, type) => {
+    const newElement = document.createElement('div');
+    document.body.appendChild(newElement);
+    ReactDOM.render(<Popup popupClass={type} text={text}/>, newElement);
+    newElement.addEventListener('animationend', () => {
+        newElement.remove();
+      });
+};
+
 const openOverlay = () => {
     const fullForm = document.querySelector('.popup-overlay');
     console.log(fullForm);
@@ -49,11 +66,42 @@ export default function AccountTeacher(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
+    const [studentEmail, setStudentEmail] = useState('');
+    const [lessonDate, setLessonDate] = useState('');
     const [userData, setUserData] = useState({
         login: '',
         email: '',
         specialization: ''
     });
+    const [upcomingLessons, setUpcomingLessons] = useState({});
+
+    useEffect(() => {
+        const fetchUpcomingLessons = async () => {
+            try {
+                const response = await fetch('http://31.129.111.117:8000/api/get-upcoming-lessons/', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + accessToken,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Ошибка при получении данных о предстоящих уроках');
+                }
+
+                const data = await response.json();
+                setUpcomingLessons(data);
+                console.log(data);
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        };
+
+        if (userData.students) {
+            fetchUpcomingLessons();
+        }
+    }, [accessToken, userData.students]);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -140,6 +188,34 @@ export default function AccountTeacher(props) {
         }
         e.target.reset();
     };
+
+    const handleScheduleLesson = async () => {
+        try {
+            const response = await fetch('http://31.129.111.117:8000/api/lessons/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken,
+                },
+                body: JSON.stringify({
+                    student_email: studentEmail,
+                    datetime: lessonDate
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка при добавлении урока');
+            }
+
+            const data = await response.json();
+            console.log('Урок успешно добавлен:', data);
+            insertElementAtEnd("Урок успешно добавлен в расписание!", "correct");
+        } catch (error) {
+            console.error('Ошибка:', error);
+            insertElementAtEnd("Произошла ошибка при добавлении урока.", "incorrect");
+        }
+    };
+
     return (
         <div className="App accountTeacher">
             <Header />
@@ -159,9 +235,7 @@ export default function AccountTeacher(props) {
                             </div>
                         </div>
                         <div className='profile-container-interface'>
-                            <Link to="/myTasks">
-                                <Button buttonName="Назначить урок" buttonClass="editBtn" onClick={handleClick1}/>
-                            </Link>
+                            <Button buttonName="Назначить урок" buttonClass="editBtn" onClick={handleClick1}/>
                             <Link to="/variantsBase">
                                 <Button buttonName="Мои варианты" buttonClass="editBtn" />
                             </Link>
@@ -175,7 +249,11 @@ export default function AccountTeacher(props) {
                     <div className="teachers-container">
                         {
                             userData.students && userData.students.map((student, index) =>
-                                <SectionButton key={index} label={student.student_name}/>
+                                <SectionButton 
+                                    key={index} 
+                                    label={student.student_name} 
+                                    datetime={upcomingLessons[student.student_name] || ""}
+                                />
                             )
                         }
                     </div>
@@ -194,12 +272,26 @@ export default function AccountTeacher(props) {
                         <p>Выберите когда будет урок и с кем</p>
                         <button className="cross-btn" onClick={handleClick}></button>
                     </div>
-                    <Select text="Выберите ученика" answers={formatExamAnswers}></Select>
-                    <input type="date" id="date" name="date"></input>
-                    <Button buttonClass="account-btn" buttonName="Сохранить формат"></Button>
+                    <Input 
+                        textLabel="Email ученика" 
+                        placeholder="Введите email ученика" 
+                        value={studentEmail} 
+                        onChange={(e) => setStudentEmail(e.target.value)}
+                    />
+                    <input 
+                        type="datetime-local" 
+                        id="date" 
+                        name="date" 
+                        value={lessonDate} 
+                        onChange={(e) => setLessonDate(e.target.value)}
+                    />
+                    <Button 
+                        buttonClass="account-btn" 
+                        buttonName="Добавить в расписание" 
+                        onClick={handleScheduleLesson}
+                    />
                 </div>
             </div>
         </div>
     );
 }
-
