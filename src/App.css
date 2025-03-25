@@ -1190,6 +1190,107 @@ h2 {
   white-space: nowrap;
 }
 
+.lesson-description {
+  width: 28%;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  background-image: url(../src/img/lesson-desc-bg.png);
+  background-size: cover;
+  padding: 29px 29px 52px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #BAFD71;
+  border-radius: 20px;
+}
+.lesson-desc-subject {
+  font-size: 21px;
+  font-weight: 600;
+}
+.lesson-desc-name {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  width: 85%;
+  text-align: start;
+}
+.lesson-desc-text {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: start;
+  width: 80%;
+  overflow-wrap: break-word;
+  margin-bottom: 16px;
+}
+.lesson-desc-title {
+  color: #95CA5A;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: start;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+.lesson-desc-interface {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.lesson-desc-close-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+}
+.lesson-desc-info-text {
+  font-size: 21px;
+}
+.time-info, .people-info, .repeat-info {
+  display: flex;
+  margin-bottom: 13px;
+}
+.time-info img, .people-info img, .repeat-info img {
+  margin-right: 16px;
+}
+.lesson-desc-info-time{
+  font-size: 21px;
+  margin-left: 48px;
+}
+.lesson-description .editBtn {
+  font-size: 14px;
+  padding: 7px 20px;
+  border: 2px #000000 solid;
+  width: min-content;
+  text-wrap: nowrap;
+}
+.lesson-desc-hw {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+.lesson-desc-input-comment {
+  background-color: #FFFFFF;
+  border: 1.5px solid #000000;
+  width: 80%;
+  height: 20%;
+  padding: 14px 16px 12px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.lesson-desc-input-comment input{
+  color:#000000;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 8px;
+  width: 100%;
+}
+.lesson-desc-input-comment button {
+  background-color: transparent;
+  border: none;
+  align-self: flex-end;
+}
 
 @keyframes fadeOut {
   0% {
