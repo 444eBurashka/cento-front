@@ -15,6 +15,7 @@ import VariantPage from './pages/variant';
 import HomeworPage from './pages/homework';
 import FuturePage from './pages/futurePage';
 import TimetablePage from './pages/TimetablePage';
+import TimetablePageteacher from './pages/TimetablePageteacher';
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
         <Route path="taskConstructor" element={<TaskConstructor/>} />
         <Route path='variant' element={<VariantPage/>} />
         <Route path='homework' element={<HomeworPage />} />
-        <Route path='timetable-teacher' element={<TimetablePage />} />
+        <Route path='timetable-student' element={<TimetablePage />} />
+        <Route path='timetable-teacher' element={<TimetablePageteacher />} />
       </Routes>
     </BrowserRouter>
   );

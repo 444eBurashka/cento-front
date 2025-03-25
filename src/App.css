@@ -1088,7 +1088,6 @@ h2 {
 .DataChanger {
   display: flex;
   align-items: center;
-  margin-bottom: 32px;
 }
 .DataChanger span{
   font-size: 28px;
@@ -1100,6 +1099,7 @@ h2 {
 .Calendar{
   display: flex;
   margin-bottom: 15px;
+  margin-top: 32px;
 }
 .Calendar-item{
   padding: 29px 110px 20px 30px;
@@ -1137,7 +1137,14 @@ h2 {
   font-size: 21.21px;
   text-align: start;
 }
-.LessonPlan {
+.lessonPlane-lessonStudent {
+  font-size: 21.21px;
+  text-align: start;
+  color: #737373;
+  width: 100%;
+  margin-top: 5px;
+}
+.LessonPlan, .LessonPlanT {
   display: flex;
   flex-direction: column;
   width: 209px;
@@ -1170,6 +1177,19 @@ h2 {
 .canceled-status {
   color: #FF9595;
 }
+
+.timetable-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.LessonPlanT .lessonPlane-lessonName{
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 
 @keyframes fadeOut {
   0% {

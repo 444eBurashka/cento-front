@@ -6,7 +6,7 @@ import DataChanger from '../components/DataChanger';
 import Calendar from '../components/Calendar';
 import LessonPlan from '../components/LessonPlan';
 
-export default function TasksBasePage() {
+export default function TimetablePage() {
     return (
         <div className="App">
             <Header />
