@@ -12,6 +12,10 @@ import PeopleBtn from '../img/people.png';
 import RepeatBtn from '../img/repeat.png';
 import CloseBtn from '../img/cross-btn-lesson.png';
 import EditBtn from '../img/edit-lesson-btn.png';
+import Select from '../components/Select';
+import SubjectBtn from '../img/subject-lesson.png';
+import ColorBtn from '../img/color-lesson.png';
+import ErrorBtn from '../img/error-btn.png';
 
 export default function TimetableteacherPage() {
     return (
@@ -53,7 +57,7 @@ export default function TimetableteacherPage() {
                 </div>
             </div>
             <Footer />
-            <div className='lesson-description'>
+            <div className='hide lesson-description'>
                 <div className='lesson-desc-interface'>
                     <div className='lesson-desc-subject'>Информатика</div>
                     <div>
@@ -89,6 +93,53 @@ export default function TimetableteacherPage() {
                         <input placeholder="Оставить комментарий"></input>
                         <button><img src={SendBtn}></img></button>
                     </div>
+                </div>
+            </div>
+
+            <div className='lesson-add'>
+                <div className='lesson-add-interface'>
+                    <div className='lesson-add-subject'>Информатика</div>
+                    <div>
+                        <Button buttonName='Сохранить' buttonClass='editBtn saveBtn'></Button>
+                        <button className='lesson-add-close-btn'><img src={CloseBtn}></img></button>
+                    </div>
+                </div>
+                <div className='lesson-add-name'>Основы программирования на Python</div>
+                <div className='lesson-add-item'>
+                    <div className='time-info'>
+                        <img src={TimeBtn}></img>
+                        <Select text="назначить дату и время" answers='' selectClass='lesson-add-info-text'></Select>
+                        <div className='lesson-add-error'>
+                            <img src={ErrorBtn}></img>
+                            <div>Конфликт с занятием «Консультация» по информатике</div>
+                        </div>
+                    </div>
+                    <div className='people-info'>
+                        <img src={PeopleBtn}></img>
+                        <Select text="добавить учеников" answers='' selectClass='lesson-add-info-text'></Select>
+                    </div>
+                    <div className='repeat-info'>
+                        <img src={RepeatBtn}></img>
+                        <Select text="не повторять" answers='' selectClass='lesson-add-info-text'></Select>
+                    </div>
+                    <div className='subject-info'>
+                        <img src={SubjectBtn}></img>
+                        <Select text="выберите предмет" answers='' selectClass='lesson-add-info-text'></Select>
+                    </div>
+                    <div className='color-info'>
+                        <img src={ColorBtn}></img>
+                        <Select text="выберите цвет" answers='' selectClass='lesson-add-info-text'></Select>
+                    </div>
+                </div>
+                <div className='lesson-add-hw'>
+                    <div className='lesson-add-title'>Домашнее задание</div>
+                    <div className='lesson-add-text'>Нужно будет прорешать вариант №5 и сделать анализ целевой аудитории</div>
+                    <Button buttonName="Перейти к заданию" buttonClass="editBtn"></Button>
+                </div>
+                <div className='lesson-add-footer'>
+                    <div className='lesson-add-title'>Комментарий к занятию</div>
+                    <div className='lesson-add-text'>Дополнительные материалы и справочники находятся тут: https://i.pinimg.com/736x/14/bd/12/14bd120697c78a5c01af159e6bc231e0.jpg</div>
+                    <Button buttonName='отменить занятие' buttonClass='errorBtn'></Button>
                 </div>
             </div>
         </div>

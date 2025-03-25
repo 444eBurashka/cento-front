@@ -1190,7 +1190,7 @@ h2 {
   white-space: nowrap;
 }
 
-.lesson-description {
+.lesson-description, .lesson-add {
   width: 28%;
   position: absolute;
   right: 0;
@@ -1204,18 +1204,18 @@ h2 {
   border: 1px solid #BAFD71;
   border-radius: 20px;
 }
-.lesson-desc-subject {
+.lesson-desc-subject, .lesson-add-subject {
   font-size: 21px;
   font-weight: 600;
 }
-.lesson-desc-name {
+.lesson-desc-name, .lesson-add-name {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 32px;
   width: 85%;
   text-align: start;
 }
-.lesson-desc-text {
+.lesson-desc-text, .lesson-add-text {
   font-size: 18px;
   font-weight: 400;
   text-align: start;
@@ -1223,7 +1223,7 @@ h2 {
   overflow-wrap: break-word;
   margin-bottom: 16px;
 }
-.lesson-desc-title {
+.lesson-desc-title, .lesson-add-title {
   color: #95CA5A;
   font-size: 24px;
   font-weight: 600;
@@ -1231,46 +1231,53 @@ h2 {
   margin-top: 32px;
   margin-bottom: 12px;
 }
-.lesson-desc-interface {
+.lesson-desc-interface, .lesson-add-interface {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
-.lesson-desc-close-btn, .lesson-desc-edit-btn {
+.lesson-add-interface div {
+  display: flex;
+  align-items: center;
+}
+.lesson-desc-close-btn, .lesson-desc-edit-btn,
+.lesson-add-close-btn, .lesson-add-edit-btn  {
   background-color: transparent;
   border: none;
   padding: 0px;
 }
-.lesson-desc-edit-btn {
+.lesson-desc-edit-btn, .lesson-add-edit-btn {
   margin-right: 10px;
 }
-.lesson-desc-info-text {
+.lesson-desc-info-text, .lesson-add-info-text {
   font-size: 21px;
 }
-.time-info, .people-info, .repeat-info {
+.time-info, .people-info, .repeat-info, .subject-info, .color-info {
   display: flex;
   margin-bottom: 13px;
 }
-.time-info img, .people-info img, .repeat-info img {
+.time-info img, .people-info img, .repeat-info img, .subject-info img, .color-info img {
   margin-right: 16px;
 }
-.lesson-desc-info-time{
+.lesson-desc-info-time, .lesson-add-info-time{
   font-size: 21px;
   margin-left: 48px;
 }
-.lesson-description .editBtn {
+.lesson-description .editBtn,
+.lesson-add .editBtn {
   font-size: 14px;
   padding: 7px 20px;
   border: 2px #000000 solid;
   width: min-content;
   text-wrap: nowrap;
 }
-.lesson-desc-hw {
+.lesson-desc-hw, .lesson-add-hw {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
 }
-.lesson-desc-input-comment {
+.lesson-desc-input-comment, .lesson-add-input-comment {
   background-color: #FFFFFF;
   border: 1.5px solid #000000;
   width: 80%;
@@ -1280,7 +1287,7 @@ h2 {
   display: flex;
   flex-direction: column;
 }
-.lesson-desc-input-comment input{
+.lesson-desc-input-comment input, .lesson-add-input-comment input{
   color:#000000;
   font-size: 18px;
   font-weight: 300;
@@ -1289,10 +1296,55 @@ h2 {
   margin-bottom: 8px;
   width: 100%;
 }
-.lesson-desc-input-comment button {
+.lesson-desc-input-comment button, .lesson-add-input-comment button {
   background-color: transparent;
   border: none;
   align-self: flex-end;
+}
+.lesson-add {
+  width: 40%;
+}
+.saveBtn {
+  font-size: 16.5px;
+  padding: 8px 23.5px;
+  margin-right: 16px;
+}
+.lesson-add-item .Select {
+  border: none;
+  font-size: 21px;
+  color: #444444;
+  font-weight: 400;
+  padding: 0px;
+  padding-right: 80px;
+  width: max-content;
+}
+.lesson-add-error div {
+  font-size: 18px;
+  color: #FF6868;
+  text-align: start;
+}
+.lesson-add-error {
+  display: flex;
+}
+.lesson-add-item img {
+  width: 27px;
+  height: 27px;
+}
+.time-info, .lesson-add-error {
+  display: flex;
+  align-items: center
+}
+.errorBtn {
+  font-size: 16px;
+  color: #010101;
+  padding: 8px 23px;
+  background-color: #FF9595;
+  border-radius: 28.36px;
+  align-self: flex-end;
+}
+.lesson-add-footer {
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes fadeOut {
