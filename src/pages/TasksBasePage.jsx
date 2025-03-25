@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
 import Select from "../components/Select";
-import Search from "../components/Search";
 import Task from "../components/Task";
 import Button from "../components/Button";
 import { taskpics } from '../data';
