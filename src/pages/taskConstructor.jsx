@@ -147,7 +147,7 @@ export default function TaskConstructor(props) {
                             <div className="task-constructor-image">
                                 <div className="task-constructor-image-title">
                                     <span>Изображение</span>
-                                    <button onClick={uu}>+</button>
+                                    <button onClick={uu} type='button'>+</button>
                                 </div>
                                 <div className="task-constructor-image-wrapper">
                                     <img alt="Выберите изображение" src={defaultImage}></img>

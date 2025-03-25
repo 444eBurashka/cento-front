@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
 import Task from "../components/Task";
 import { taskpics } from '../data';
+import { useSelector } from 'react-redux';
+import Button from '../components/Button';
 
 const subjectdctbyID = {
     1: "Информатика",
@@ -11,16 +14,20 @@ const subjectdctbyID = {
 }
 
 export default function VariantPage(props) {
+    const role = useSelector(state => state.auth.role);
+    const accessToken = useSelector(state => state.auth.accessToken);
     const [TASKTYPE, setTASKTYPE] = useState({});
-    const [filteredTasks, setFilteredTasks] = useState({ tasks: [] }); // Инициализация с пустым массивом задач
-    const [variantId, setvariantID] = useState(''); // Получаем ID варианта из URL
+    const [filteredTasks, setFilteredTasks] = useState({ tasks: [] });
+    const [variantId, setvariantID] = useState('');
+    const [taskInputs, setTaskInputs] = useState({});
+    const [responseResult, setResponseResult] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const url = new URL(document.location);
         const params = url.searchParams;
         setvariantID(params.get("id"))
 
-        // Функция для получения заданий варианта
         const fetchTasks = async () => {
             try {
                 const response = await fetch(`http://31.129.111.117:8000/api/variants/${params.get("id")}/`);
@@ -28,7 +35,7 @@ export default function VariantPage(props) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setFilteredTasks(data); // Предполагаем, что данные приходят в формате { tasks: [...] }
+                setFilteredTasks(data);
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
             }
@@ -36,7 +43,6 @@ export default function VariantPage(props) {
 
         fetchTasks();
 
-        // Загрузка типов задач
         fetch('http://31.129.111.117:8000/api/task_type/')
             .then(response => response.json())
             .then(data => {
@@ -47,7 +53,59 @@ export default function VariantPage(props) {
                 setTASKTYPE(taskTypeDict);
             })
             .catch(error => console.error('Ошибка при получении типов задач:', error));
-    }, [variantId]); // Зависимость от variantId, чтобы запрос выполнялся при изменении ID варианта
+    }, [variantId]);
+
+    // Инициализация taskInputs с пустыми ответами
+    useEffect(() => {
+        if (filteredTasks.tasks && filteredTasks.tasks.length > 0) {
+            const initialTaskInputs = {};
+            filteredTasks.tasks.forEach(task => {
+                initialTaskInputs[task.id] = '';
+            });
+            setTaskInputs(initialTaskInputs);
+        }
+    }, [filteredTasks]);
+
+    // Обработчик изменения значения в поле Input
+    const handleInputChange = (taskId, value) => {
+        setTaskInputs(prevState => ({
+            ...prevState,
+            [taskId]: value
+        }));
+    };
+
+    // Обработчик нажатия на кнопку "Отправить"
+    const handleSubmit = async () => {
+        try {
+            var dct = {
+                variant_id: variantId,
+                answers: taskInputs
+            }
+            console.log(dct)
+            const response = await fetch('http://31.129.111.117:8000/api/check-variant/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: JSON.stringify({
+                    variant_id: variantId,
+                    answers: taskInputs
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            setResponseResult(result);
+            navigate('/homework');
+            // console.log(responseResult);
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+        }
+    };
 
     return (
         <div className="App">
@@ -64,8 +122,11 @@ export default function VariantPage(props) {
                             image={taskpics[task.image_path]}
                             answer={task.correct_answer}
                             exam={subjectdctbyID[task.fk_exam_id]}
+                            test={role === "/accountStudent" ? true : false}
+                            onInputChange={handleInputChange} // Передаем обработчик в Task
                         />
                     ))}
+                    <Button buttonClass="account-btn" buttonName="Отправить" onClick={handleSubmit} />
                 </div>
             </div>
             <Footer />
