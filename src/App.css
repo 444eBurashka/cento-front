@@ -1236,10 +1236,13 @@ h2 {
   width: 100%;
   justify-content: space-between;
 }
-.lesson-desc-close-btn {
+.lesson-desc-close-btn, .lesson-desc-edit-btn {
   background-color: transparent;
   border: none;
   padding: 0px;
+}
+.lesson-desc-edit-btn {
+  margin-right: 10px;
 }
 .lesson-desc-info-text {
   font-size: 21px;
