@@ -1346,6 +1346,17 @@ h2 {
   display: flex;
   flex-direction: column;
 }
+.change-time, .canceled-lesson {
+  display: flex;
+  flex-direction: column;
+}
+.canceled-btn {
+  background-color: #FF9595;
+  align-self: center;
+}
+.check-btn {
+  align-self: center;
+}
 
 @keyframes fadeOut {
   0% {

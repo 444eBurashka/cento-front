@@ -96,7 +96,7 @@ export default function TimetableteacherPage() {
                 </div>
             </div>
 
-            <div className='lesson-add'>
+            <div className='hide lesson-add'>
                 <div className='lesson-add-interface'>
                     <div className='lesson-add-subject'>Информатика</div>
                     <div>
@@ -140,6 +140,28 @@ export default function TimetableteacherPage() {
                     <div className='lesson-add-title'>Комментарий к занятию</div>
                     <div className='lesson-add-text'>Дополнительные материалы и справочники находятся тут: https://i.pinimg.com/736x/14/bd/12/14bd120697c78a5c01af159e6bc231e0.jpg</div>
                     <Button buttonName='отменить занятие' buttonClass='errorBtn'></Button>
+                </div>
+            </div>
+
+            <div className="hide popup-overlay">
+                <div className="popup change-time">
+                    <div className="title-wrapper">
+                        <p>Выберите время переноса занятия</p>
+                        <button className="cross-btn"></button>
+                    </div>
+                    <Select text="Время занятия" answers='' />
+                    <Button buttonClass="account-btn check-btn" buttonName="Подтвердить" />
+                </div>
+            </div>
+
+            <div className="hide popup-overlay">
+                <div className="popup canceled-lesson">
+                    <div className="title-wrapper">
+                        <p>Выберите причину отмены занятия</p>
+                        <button className="cross-btn"></button>
+                    </div>
+                    <Select text="Причина отмены занятия" answers='' />
+                    <Button buttonClass="account-btn canceled-btn" buttonName="Отменить занятие" />
                 </div>
             </div>
         </div>
