@@ -8,6 +8,8 @@ import TaskInfoWrapper from "../components/TaskInfoWrapper";
 import Task from '../components/Task';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { APIURL } from '../data';
+
 const subjectdctbyID = {
     1: "Информатика",
     2: 'Математика'
@@ -23,7 +25,7 @@ export default function StudentTasksPage(props) {
     useEffect(() => {
 
         // Загрузка задач
-        fetch('http://31.129.111.117:8000/api/combined-tasks/', {
+        fetch(APIURL + 'combined-tasks/', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + accessToken,
@@ -34,7 +36,7 @@ export default function StudentTasksPage(props) {
             .catch(error => console.error('Ошибка при получении данных:', error));
 
         // Загрузка типов задач
-        fetch('http://31.129.111.117:8000/api/task_type/')
+        fetch(APIURL + 'task_type/')
             .then(response => response.json())
             .then(data => {
                 const taskTypeDict = {};

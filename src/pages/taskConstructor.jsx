@@ -9,6 +9,8 @@ import defaultImage from "../img/defaultImg.png";
 import { useSelector } from 'react-redux'; // Импортируем useSelector
 import { Navigate, useNavigate } from 'react-router-dom';
 
+import { APIURL } from '../data';
+
 const formatExamAnswers = {
     "OGE": 'ОГЭ',
     "EGE": "ЕГЭ"
@@ -79,7 +81,7 @@ export default function TaskConstructor(props) {
         if (taskData.fk_code_of_type === '1' || taskData.fk_code_of_type === '2' || taskData.fk_code_of_type === '3' || taskData.fk_code_of_type === '4' || taskData.fk_code_of_type === '5') {
             if (taskData.fk_exam_id && taskData.description && taskData.correct_answer) {
                 try {
-                    const response = await fetch('http://31.129.111.117:8000/api/create-task/', {
+                    const response = await fetch(APIURL + 'create-task/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

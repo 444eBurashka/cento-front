@@ -52,4 +52,6 @@ const registerData = {
     linkAddBtn: '/login',
 };
 
-export {loginData, registerData, taskpics}
+const APIURL = "http://217.114.0.117:8000/api/";
+
+export {loginData, registerData, taskpics, APIURL}

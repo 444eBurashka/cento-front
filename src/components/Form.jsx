@@ -5,6 +5,7 @@ import { loginData, registerData } from "../data.js";
 import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTokens, clearTokens } from '../store/store.js';
+import { APIURL } from '../data.js';
 
 const Popup = (props) => {
     return (
@@ -33,7 +34,7 @@ export default function Form(props) {
         e.preventDefault();
 
         if (props.formType === 'login') {
-            const tokenUrl = "http://31.129.111.117:8000/api/token/";
+            const tokenUrl = APIURL + "token/";
             const formdata = {
                 "username": e.target[0].value,
                 "password": e.target[1].value,
@@ -101,8 +102,8 @@ export default function Form(props) {
                 };
     
                 const registerUrl = formdata["role"] === "Ученик"
-                    ? "http://31.129.111.117:8000/api/register/student/"
-                    : "http://31.129.111.117:8000/api/register/teacher/";
+                    ? APIURL + "register/student/"
+                    : APIURL + "register/teacher/";
     
                 const options = {
                     method: 'POST',
@@ -116,7 +117,7 @@ export default function Form(props) {
                     .then(response => response.json())
                     .then(data => {
                         if (data.message === 'Student registered successfully' || data.message === 'Teacher registered successfully') {
-                            const tokenUrl = "http://31.129.111.117:8000/api/token/";
+                            const tokenUrl = APIURL + "token/";
                             const tokenData = {
                                 username: formdata.username,
                                 password: formdata.password1

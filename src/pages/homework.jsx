@@ -5,6 +5,8 @@ import PageTitle from "../components/PageTitle";
 import TaskInfoWrapper from '../components/TaskInfoWrapper';
 import { useSelector } from 'react-redux';
 
+import { APIURL } from '../data';
+
 export default function HomeworPage(props) {
     const accessToken = useSelector(state => state.auth.accessToken);
     const [homeworkData, setHomeworkData] = useState([]);
@@ -13,7 +15,7 @@ export default function HomeworPage(props) {
     useEffect(() => {
         const fetchHomeworkData = async () => {
             try {
-                const response = await fetch('http://31.129.111.117:8000/api/get-homework/', {
+                const response = await fetch(APIURL + 'get-homework/', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,

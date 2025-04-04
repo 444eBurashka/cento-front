@@ -11,6 +11,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTokens, clearTokens } from '../store/store.js';
 
+import { APIURL } from '../data.js';
+
 export default function AccountStudent(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -24,7 +26,7 @@ export default function AccountStudent(props) {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://31.129.111.117:8000/api/profile/', {
+                const response = await fetch(APIURL + 'profile/', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

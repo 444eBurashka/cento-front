@@ -11,6 +11,8 @@ import MainPageImg2 from "../img/main-page-2.png";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
+import { APIURL } from "../data";
+
 export default function MainPage(props) {
     const accessToken = useSelector(state => state.auth.accessToken);
     const role = useSelector(state => state.auth.role);
@@ -29,7 +31,7 @@ export default function MainPage(props) {
             };
 
             try {
-                const response = await fetch("http://31.129.111.117:8000/api/tariff/", options);
+                const response = await fetch(APIURL + "tariff/", options);
                 const data = await response.json();
                 setRates(data);
             } catch (error) {

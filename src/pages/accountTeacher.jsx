@@ -13,6 +13,8 @@ import { setTokens, clearTokens } from '../store/store.js';
 import Input from "../components/Input.jsx";
 import ReactDOM from 'react-dom';
 
+import { APIURL } from '../data.js';
+
 const closeBtn = () => {
     const fullForm = document.getElementsByClassName('popup-overlay');
 };
@@ -78,7 +80,7 @@ export default function AccountTeacher(props) {
     useEffect(() => {
         const fetchUpcomingLessons = async () => {
             try {
-                const response = await fetch('http://31.129.111.117:8000/api/get-upcoming-lessons/', {
+                const response = await fetch(APIURL + 'get-upcoming-lessons/', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -106,7 +108,7 @@ export default function AccountTeacher(props) {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://31.129.111.117:8000/api/profile/', {
+                const response = await fetch(APIURL + 'profile/', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -144,7 +146,7 @@ export default function AccountTeacher(props) {
         e.preventDefault();
         console.log(email);
         try {
-            const addStudentResponse = await fetch('http://31.129.111.117:8000/api/add-student/', {
+            const addStudentResponse = await fetch(APIURL + 'add-student/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -161,7 +163,7 @@ export default function AccountTeacher(props) {
             console.log('Ученик успешно добавлен:', addStudentData);
     
 
-            const profileResponse = await fetch('http://31.129.111.117:8000/api/profile/', {
+            const profileResponse = await fetch(APIURL + 'profile/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -191,7 +193,7 @@ export default function AccountTeacher(props) {
 
     const handleScheduleLesson = async () => {
         try {
-            const response = await fetch('http://31.129.111.117:8000/api/lessons/', {
+            const response = await fetch(APIURL + 'lessons/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -7,6 +7,8 @@ import Task from "../components/Task";
 import Button from "../components/Button";
 import { taskpics } from '../data';
 
+import { APIURL } from '../data';
+
 const answersData = {
     "math": 'Математика',
     "info": "Информатика"
@@ -45,13 +47,13 @@ export default function TasksBasePage(props) {
 
     useEffect(() => {
         // Загрузка задач
-        fetch('http://31.129.111.117:8000/api/task/')
+        fetch(APIURL + 'task/')
             .then(response => response.json())
             .then(data => setTASKS(data))
             .catch(error => console.error('Ошибка при получении данных:', error));
 
         // Загрузка типов задач
-        fetch('http://31.129.111.117:8000/api/task_type/')
+        fetch(APIURL + 'task_type/')
             .then(response => response.json())
             .then(data => {
                 const taskTypeDict = {};

@@ -8,6 +8,8 @@ import { taskpics } from '../data';
 import { useSelector } from 'react-redux';
 import Button from '../components/Button';
 
+import { APIURL } from '../data';
+
 const subjectdctbyID = {
     1: "Информатика",
     2: 'Математика'
@@ -30,7 +32,7 @@ export default function VariantPage(props) {
 
         const fetchTasks = async () => {
             try {
-                const response = await fetch(`http://31.129.111.117:8000/api/variants/${params.get("id")}/`);
+                const response = await fetch(APIURL + `variants/${params.get("id")}/`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -43,7 +45,7 @@ export default function VariantPage(props) {
 
         fetchTasks();
 
-        fetch('http://31.129.111.117:8000/api/task_type/')
+        fetch(APIURL + 'task_type/')
             .then(response => response.json())
             .then(data => {
                 const taskTypeDict = {};
@@ -82,7 +84,7 @@ export default function VariantPage(props) {
                 answers: taskInputs
             }
             console.log(dct)
-            const response = await fetch('http://31.129.111.117:8000/api/check-variant/', {
+            const response = await fetch(APIURL + 'check-variant/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

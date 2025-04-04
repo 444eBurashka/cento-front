@@ -11,6 +11,8 @@ import Select from "../components/Select";
 import Input from "../components/Input";
 import { Link } from 'react-router-dom';
 
+import { APIURL } from '../data';
+
 const status = 'found';
 const formatExamAnswers = {
     "OGE": 'ОГЭ',
@@ -46,7 +48,7 @@ export default function TasksBasePage(props) {
 
     const fetchVariants = async () => {
         try {
-            const response = await fetch('http://31.129.111.117:8000/api/combined-variants/', {
+            const response = await fetch(APIURL + 'combined-variants/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +75,7 @@ export default function TasksBasePage(props) {
         event.preventDefault();
 
         if (taskIds) {
-            const response = await fetch('http://31.129.111.117:8000/api/create-variant/', {
+            const response = await fetch(APIURL + 'create-variant/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -109,7 +111,7 @@ export default function TasksBasePage(props) {
         event.preventDefault();
 
         if (variantId && studentId) {
-            const response = await fetch('http://31.129.111.117:8000/api/create-homework/', {
+            const response = await fetch(APIURL + 'create-homework/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
