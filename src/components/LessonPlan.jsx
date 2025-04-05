@@ -8,7 +8,13 @@ export default function LessonPlan(props) {
             </div>
             <div className="lessonPlane-subject">{props.subject}</div>
             <div className="lessonPlane-lessonName">{props.lessonName}</div>
-            <Button buttonClass="lessonPlan-btn" buttonName={props.lessonLinkName}></Button>
+            <Button 
+                buttonClass="lessonPlan-btn" buttonName={props.lessonLinkName} 
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.onDetailsClick();
+                }}>
+            </Button>
         </div>  
     )
 }
