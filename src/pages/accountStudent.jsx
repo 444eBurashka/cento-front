@@ -71,6 +71,9 @@ export default function AccountStudent(props) {
                         <Link to="/homework">
                             <Button buttonName="Мои домашние задания" buttonClass="editBtn" />
                         </Link>
+                        <Link to="/timetable-student">   
+                            <Button buttonName="К расписанию" buttonClass="editBtn" />
+                        </Link>
                         <Button buttonName="Выйти" buttonClass="editBtn" onClick={handleLogout} />
                     </div>
                     <div className="info-container">

@@ -237,7 +237,9 @@ export default function AccountTeacher(props) {
                             </div>
                         </div>
                         <div className='profile-container-interface'>
-                            <Button buttonName="Назначить урок" buttonClass="editBtn" onClick={handleClick1}/>
+                            <Link to="/timetable-teacher">   
+                                <Button buttonName="К расписанию" buttonClass="editBtn" />
+                            </Link>
                             <Link to="/variantsBase">
                                 <Button buttonName="Мои варианты" buttonClass="editBtn" />
                             </Link>

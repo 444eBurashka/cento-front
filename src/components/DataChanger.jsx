@@ -4,9 +4,13 @@ import nextArrow from "../img/next-arrow.png";
 export default function DataChanger(props) {
     return (
         <div className="DataChanger">
-            <img src={prevArrow}></img>
+            <button onClick={props.onPrevClick} className="week-nav-button">
+                <img src={prevArrow} alt="Предыдущая неделя" />
+            </button>
             <span>{props.text}</span>
-            <img src={nextArrow}></img>
+            <button onClick={props.onNextClick} className="week-nav-button">
+                <img src={nextArrow} alt="Следующая неделя" />
+            </button>
         </div>
     );
 }
