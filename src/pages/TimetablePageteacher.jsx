@@ -21,6 +21,13 @@ import ErrorBtn from '../img/error-btn.png';
 
 import { APIURL } from '../data';
 
+// Добавляем список предметов с ID
+const subjects = [
+    { id: 1, name: 'Информатика' },
+    { id: 2, name: 'Математика' },
+    { id: 3, name: 'Физика' }
+  ];
+
 export default function TimetableteacherPage() {
     const accessToken = useSelector(state => state.auth.accessToken);
 
@@ -32,6 +39,50 @@ export default function TimetableteacherPage() {
     const [weekOffset, setWeekOffset] = useState(0);
     const [lessons, setLessons] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const [students, setStudents] = useState([]);
+    const [newLesson, setNewLesson] = useState({
+        title: 'Введите тему занятия',
+        subject_id: 1,
+        subject_name: 'Информатика',
+        datetime: '',
+        student_id: '',
+        is_repetitive: false,
+        color: '#3a86ff',
+        comment: ''
+    });
+
+    // Получаем список учеников
+    const fetchStudents = async () => {
+        try {
+            const response = await fetch(APIURL + 'profile/', {
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken,
+                }
+            });
+            const data = await response.json();
+            console.log(data.students);
+            setStudents(data.students || []);
+        } catch (error) {
+            console.error('Error fetching students:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchStudents();
+    }, []);
+
+    // Обновляем обработчик изменений для select предмета
+    const handleSubjectChange = (e) => {
+        const selectedId = parseInt(e.target.value);
+        const selectedSubject = subjects.find(subj => subj.id === selectedId);
+        
+        setNewLesson(prev => ({
+          ...prev,
+          subject_id: selectedId,
+          subject_name: selectedSubject.name
+        }));
+      };
 
     // Функция для получения дат недели с учетом смещения
     const getWeekDates = (offset = 0) => {
@@ -173,6 +224,66 @@ export default function TimetableteacherPage() {
         setSelectedLesson(null);
     };
 
+    // Обработчики изменений формы
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewLesson(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleCheckboxChange = (e) => {
+        const { name, checked } = e.target;
+        setNewLesson(prev => ({
+            ...prev,
+            [name]: checked
+        }));
+    };
+
+    // Отправка нового занятия
+    const handleSaveLesson = async () => {
+        try {
+            const data = JSON.stringify({
+                lesson_name: newLesson.title,
+                exam_id: newLesson.subject_id,
+                datetime: newLesson.datetime,
+                student_id: newLesson.student_id,
+                is_repetitive: newLesson.is_repetitive,
+                color: newLesson.color,
+                teacher_comment: newLesson.comment,
+                duration: 90
+            });
+            console.log(data);
+            const response = await fetch(APIURL + 'schedule-elements/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken,
+                },
+                body: JSON.stringify({
+                    lesson_name: newLesson.title,
+                    exam_id: newLesson.subject_id,
+                    datetime: newLesson.datetime,
+                    student_id: newLesson.student_id,
+                    is_repetitive: newLesson.is_repetitive,
+                    color: newLesson.color,
+                    teacher_comment: newLesson.comment,
+                    duration: 90
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка при сохранении занятия');
+            }
+
+            setShowAddLessonForm(false);
+            fetchLessons(); // Обновляем список занятий
+        } catch (error) {
+            console.error('Error saving lesson:', error);
+        }
+    };
+
     return (
         <div className="App">
             <Header />
@@ -276,53 +387,108 @@ export default function TimetableteacherPage() {
 
             <div className={showAddLessonForm ? 'lesson-add' : 'hide lesson-add'}>
                 <div className='lesson-add-interface'>
-                    <div className='lesson-add-subject'>Информатика</div>
+                    <div className='lesson-add-subject'>{newLesson.subject}</div>
                     <div>
-                        <Button buttonName='Сохранить' buttonClass='editBtn saveBtn'></Button>
+                        <Button 
+                            buttonName='Сохранить' 
+                            buttonClass='editBtn saveBtn'
+                            onClick={handleSaveLesson}
+                        />
                         <button 
-                          className='lesson-add-close-btn'
-                          onClick={() => setShowAddLessonForm(false)}
+                            className='lesson-add-close-btn'
+                            onClick={() => setShowAddLessonForm(false)}
                         >
-                            <img src={CloseBtn}></img>
+                            <img src={CloseBtn} alt="Закрыть"/>
                         </button>
                     </div>
                 </div>
-                <div className='lesson-add-name'>Основы программирования на Python</div>
+                
+                <input
+                    type="text"
+                    className='lesson-add-name'
+                    value={newLesson.title}
+                    name="title"
+                    onChange={handleInputChange}
+                />
+                
                 <div className='lesson-add-item'>
                     <div className='time-info'>
-                        <img src={TimeBtn}></img>
-                        <Select text="назначить дату и время" answers='' selectClass='lesson-add-info-text'></Select>
-                        <div className='lesson-add-error'>
-                            <img src={ErrorBtn}></img>
-                            <div>Конфликт с занятием «Консультация» по информатике</div>
-                        </div>
+                        <img src={TimeBtn} alt="Время"/>
+                        <input
+                            type="datetime-local"
+                            className='lesson-add-info-text'
+                            value={newLesson.datetime}
+                            name="datetime"
+                            onChange={handleInputChange}
+                        />
                     </div>
+                    
                     <div className='people-info'>
-                        <img src={PeopleBtn}></img>
-                        <Select text="добавить учеников" answers='' selectClass='lesson-add-info-text'></Select>
+                        <img src={PeopleBtn} alt="Ученик"/>
+                        <select
+                            className='lesson-add-info-text'
+                            value={newLesson.student_id}
+                            name="student_id"
+                            onChange={handleInputChange}
+                        >
+                            <option value="">Выберите ученика</option>
+                            {students.map(student => (
+                                <option key={student.student_id} value={student.student_id}>
+                                    {student.student_name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
+                    
                     <div className='repeat-info'>
-                        <img src={RepeatBtn}></img>
-                        <Select text="не повторять" answers='' selectClass='lesson-add-info-text'></Select>
+                        <img src={RepeatBtn} alt="Повтор"/>
+                        <label className='lesson-add-info-text'>
+                            <input
+                                type="checkbox"
+                                checked={newLesson.is_repetitive}
+                                name="is_repetitive"
+                                onChange={handleCheckboxChange}
+                            />
+                            {newLesson.is_repetitive ? 'Повторять каждую неделю' : 'Не повторять'}
+                        </label>
                     </div>
+                    
                     <div className='subject-info'>
-                        <img src={SubjectBtn}></img>
-                        <Select text="выберите предмет" answers='' selectClass='lesson-add-info-text'></Select>
+                        <img src={SubjectBtn} alt="Предмет"/>
+                        <select
+                            className='lesson-add-info-text'
+                            value={newLesson.subject_id}
+                            onChange={handleSubjectChange}
+                        >
+                            {subjects.map(subject => (
+                                <option key={subject.id} value={subject.id}>
+                                    {subject.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
+                    
                     <div className='color-info'>
-                        <img src={ColorBtn}></img>
-                        <Select text="выберите цвет" answers='' selectClass='lesson-add-info-text'></Select>
+                        <img src={ColorBtn} alt="Цвет"/>
+                        <input
+                            type="color"
+                            className='lesson-add-info-text'
+                            value={newLesson.color}
+                            name="color"
+                            onChange={handleInputChange}
+                        />
                     </div>
                 </div>
-                {/* <div className='lesson-add-hw'>
-                    <div className='lesson-add-title'>Домашнее задание</div>
-                    <div className='lesson-add-text'>Нужно будет прорешать вариант №5 и сделать анализ целевой аудитории</div>
-                    <Button buttonName="Перейти к заданию" buttonClass="editBtn"></Button>
-                </div> */}
+                
                 <div className='lesson-add-footer'>
                     <div className='lesson-add-title'>Комментарий к занятию</div>
-                    <div className='lesson-add-text'>Дополнительные материалы и справочники находятся тут: https://i.pinimg.com/736x/14/bd/12/14bd120697c78a5c01af159e6bc231e0.jpg</div>
-                    <Button buttonName='отменить занятие' buttonClass='errorBtn'></Button>
+                    <textarea
+                        className='lesson-add-text'
+                        value={newLesson.comment}
+                        name="comment"
+                        onChange={handleInputChange}
+                        placeholder="Введите комментарий..."
+                    />
                 </div>
             </div>
 
