@@ -16,6 +16,7 @@ import HomeworPage from './pages/homework';
 import FuturePage from './pages/futurePage';
 import TimetablePage from './pages/TimetablePage';
 import TimetablePageteacher from './pages/TimetablePageteacher';
+import VideoSettings from './pages/VideoSettings';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='homework' element={<HomeworPage />} />
         <Route path='timetable-student' element={<TimetablePage />} />
         <Route path='timetable-teacher' element={<TimetablePageteacher />} />
+        <Route path='video-settings' element={<VideoSettings />} />
       </Routes>
     </BrowserRouter>
   );

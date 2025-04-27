@@ -14,7 +14,7 @@ export default function Select(props) {
         <select
             className={"Select " + props.selectClass}
             onChange={handleChange} // Привязываем обработчик
-            defaultValue="" // Устанавливаем значение по умолчанию
+            defaultValue='' // Устанавливаем значение по умолчанию
         >
             <option value="" disabled>
                 {props.text}

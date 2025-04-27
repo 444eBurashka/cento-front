@@ -1358,6 +1358,72 @@ h2 {
   align-self: center;
 }
 
+.FormSettings h2{
+  margin-bottom: 48px;
+}
+
+.FormSettings div .Select {
+  border: none;
+  border-bottom: 1px solid #444444;
+  border-radius: 0px;
+}
+.select-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.select-container span {
+  font-size: 24px;
+  color: #95CA5A;
+  font-weight: 600;
+}
+.settings {
+  color: #444444;
+  padding-left: 0px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.FormSettings .buttons-container {
+  display: flex;
+}
+
+.SelectedPeople {
+  border-radius: 33px;
+  background-color: #E1FFC0;
+  color: #444444;
+  width: fit-content;
+  padding: 2px 7px;
+  padding-left: 12px;
+  align-items: center;
+}
+.SelectedPeople p {
+  font-size: 14px;
+  margin-right: 9px;
+}
+.SelectedPeople button {
+  border: none;
+  background-color: transparent;
+  margin-bottom: 2px;
+}
+.FormSettings .selectedPeople-container {
+  margin-bottom: 41px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttons-container .edit-btn {
+  color:#000000;
+  font-size: 28px;
+  margin-right: 8px;
+  border: 2px #000000 solid;
+  border-radius: 50px;
+  padding: 12px 40px;
+}
+.buttons-container .account-btn {
+  color:#000000;
+  font-size: 28px;
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;
