@@ -1554,6 +1554,47 @@ h2 {
   margin: 20px auto;
 }
 
+.lesson-info-popup .lesson-info-popup-subtitle-container p {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: start;
+  text-wrap: nowrap;
+}
+.lesson-info-popup .lesson-info-popup-subtitle-container .lesson-info-popup-subtitle {
+  color: #95CA5A;
+  font-size: 20px;
+  font-weight: 500;
+}
+.lesson-info-popup-subtitle-container {
+  margin-bottom: 20px;
+}
+
+.lesson-info-popup {
+  width: min-content;
+}
+.lesson-info-popup-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  margin-right: 80px;
+}
+
+.popup-price-container .popup-price-title{
+  font-weight: 500;
+  font-size: 32px;
+  color: #95CA5A;
+}
+.popup-price-container .popup-price-sum{
+  font-weight: 400;
+  font-size: 32px;
+}
+.popup-price-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 80px;
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;
