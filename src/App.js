@@ -18,6 +18,7 @@ import TimetablePage from './pages/TimetablePage';
 import TimetablePageteacher from './pages/TimetablePageteacher';
 import VideoSettings from './pages/VideoSettings';
 import FinanceReport from './pages/FinanceReport';
+import FinanceReportDetailed from './pages/FinanceReportDetailed';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path='timetable-teacher' element={<TimetablePageteacher />} />
         <Route path='video-settings' element={<VideoSettings />} />
         <Route path='finance-report' element={<FinanceReport />} />
+        <Route path='finance-report-detailed' element={<FinanceReportDetailed />} />
       </Routes>
     </BrowserRouter>
   );

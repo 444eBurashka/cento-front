@@ -1593,6 +1593,22 @@ h2 {
   flex-direction: row;
   justify-content: space-between;
   margin-right: 80px;
+  }
+
+.FinanceReportDetailed .AppChart {
+  margin-top: 90px;
+}
+
+.fin-detailed-container p{
+  font-size: 21.66px;
+  text-wrap: nowrap;
+}
+.fin-detailed-container-elem {
+  display: flex;
+  flex-direction: row;
+  gap: 84px;
+  justify-content: space-between;
+  margin-bottom: 16.12px;
 }
 
 @keyframes fadeOut {
