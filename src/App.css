@@ -1508,7 +1508,7 @@ h2 {
   background-color: #ffffff;
   border-radius: 12px;
   height: min-content;
-  
+
 }
 .fin-states-container p{
   font-size: 32px;
@@ -1534,6 +1534,25 @@ h2 {
   margin-bottom: 20px;
 }
 
+.date-select {
+  font-size: 28px;
+  font-family: "SFPro";
+  text-align: start;
+  margin: 10px;
+}
+.date-select-input {
+  border: 1px solid #000000;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.finance-popup {
+  display: flex;
+  flex-direction: column;
+}
+.finance-popup .Button{
+  margin: 20px auto;
+}
 
 @keyframes fadeOut {
   0% {

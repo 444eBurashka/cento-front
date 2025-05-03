@@ -6,6 +6,8 @@ import SubTitle from "../components/SubTitle";
 import ImageSlider from "../components/FinSlider";
 import FinStates from "../components/FinStates";
 import Button from "../components/Button";
+import Select from "../components/Select";
+
 
 const stateLabels = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг"];
 const finData = [
@@ -14,32 +16,10 @@ const finData = [
       data: [10, 20, 30, 40, 50, 0, 0, 0],
       backgroundColor: "rgba(204, 255, 149, 1)", 
     }];
-const unpayedLessons = [
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python', 
-        price: 1300
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python',
-        price: 1300
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python',
-        price: 1300
-    }
-]
+const answersData = {
+    "math": 'Математика',
+    "info": "Информатика"
+};
 
 export default function FinanceReport(props) {
     return (
@@ -71,6 +51,21 @@ export default function FinanceReport(props) {
                 </div>
             </div>
             <Footer />
+
+            <div className="popup-overlay">
+                <div className="popup finance-popup">
+                    <div className="title-wrapper">
+                        <p>Финансовый отчет</p>
+                        <button className="cross-btn"></button>
+                    </div>
+                    <Select text="Выберите предмет" answers={answersData}></Select>
+                    <p className="date-select">Дата начала отчета</p>
+                    <input className='date-select-input' type="date" id="start" name="trip-start" value="2018-01-01" min="2018-01-01" max="2018-12-31" />
+                    <p className="date-select">Дата конца отчета</p>
+                    <input className='date-select-input' type="date" id="start" name="trip-start" value="2018-01-01" min="2018-01-01" max="2018-12-31" />
+                    <Button buttonClass="account-btn" buttonName="Сформировать отчет"></Button>
+                </div>
+            </div>
         </div>
       );
 }

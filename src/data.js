@@ -54,4 +54,49 @@ const registerData = {
 
 const APIURL = "http://217.114.0.117:8000/api/";
 
-export {loginData, registerData, taskpics, APIURL}
+const payedLessons = [
+    {
+        date: '12.03',
+        time: '12:00',
+        subject: 'Информатика',
+        student: 'Иванов И.И.',
+        theme: 'Основы программирования на Python'
+    },
+    {
+        date: '12.03',
+        time: '12:00',
+        subject: 'Информатика',
+        student: 'Иванов И.И.',
+        theme: 'Основы программирования на Python'
+    },
+    {
+        date: '12.03',
+        time: '12:00',
+        subject: 'Информатика',
+        student: 'Иванов И.И.',
+        theme: 'Основы программирования на Python'
+    },
+    {
+        date: '12.03',
+        time: '12:00',
+        subject: 'Информатика',
+        student: 'Иванов И.И.',
+        theme: 'Основы программирования на Python'
+    },
+    {
+        date: '12.03',
+        time: '12:00',
+        subject: 'Информатика',
+        student: 'Иванов И.И.',
+        theme: 'Основы программирования на Python'
+    },
+    {
+        date: '12.03',
+        time: '12:00',
+        subject: 'Информатика',
+        student: 'Иванов И.И.',
+        theme: 'Основы программирования на Python'
+    }
+]
+
+export {loginData, registerData, taskpics, APIURL, payedLessons}

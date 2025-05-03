@@ -6,53 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import FinanceLessonCard from './FinanceLessonCard';
 import FinPrevArrow from './FinPrevArrow';
 import FinNextArrow from './FinNextArroe';
+import { payedLessons } from '../data';
 
-const payedLessons = [
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python'
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python'
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python'
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python'
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python'
-    },
-    {
-        date: '12.03',
-        time: '12:00',
-        subject: 'Информатика',
-        student: 'Иванов И.И.',
-        theme: 'Основы программирования на Python'
-    }
-]
-
-const ImageSlider = () => {
+const ImageSlider = (props) => {
+  const data = payedLessons;
   const settings = {
     nextArrow: <FinNextArrow/>,
     prevArrow: <FinPrevArrow/>,
@@ -68,7 +25,7 @@ const ImageSlider = () => {
   return (
     <Slider className='FinSlider' {...settings}>
       {
-        payedLessons.map((elem) => (
+        data.map((elem) => (
             <FinanceLessonCard Date={elem.date} Time={elem.time} theme={elem.theme} student={elem.student} subject={elem.subject}/>
         ))
       }
