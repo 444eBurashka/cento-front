@@ -66,7 +66,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <Slider {...settings}>
+    <Slider className='FinSlider' {...settings}>
       {
         payedLessons.map((elem) => (
             <FinanceLessonCard Date={elem.date} Time={elem.time} theme={elem.theme} student={elem.student} subject={elem.subject}/>

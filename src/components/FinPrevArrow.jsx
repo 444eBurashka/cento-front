@@ -1,12 +1,10 @@
+import prevArrow from '../img/fin-prev-arrow.svg';
+
 export default function PrevArrow (props) {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "black", borderRadius: "50%", padding: "10px" }}
-        onClick={onClick}
-      >
-        ◀
+      <div className={className} onClick={onClick}>
+        <img src={prevArrow}></img>
       </div>
     );
 };

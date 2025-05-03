@@ -1478,7 +1478,7 @@ h2 {
 
 .slick-slider {
   width: 100%;
-  max-width: 800px;
+  max-width: 1020px;
   margin: 0 auto;
 }
 
@@ -1490,6 +1490,50 @@ h2 {
   width: 100%;
   height: auto;
 }
+.FinanceReport .slick-list {
+  margin-right: 10px;
+  margin-left: 60px;
+}
+.slick-slide .FinanceLessonCard {
+  width: 239px !important;
+}
+.FinSlider {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.fin-states-container {
+  padding: 30px 33px 29px 22px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  border-radius: 12px;
+  height: min-content;
+  
+}
+.fin-states-container p{
+  font-size: 32px;
+  font-weight: 400;
+}
+.fin-states-container .fin-states-benefit{
+  color: #95CA5A;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.fin-states-container .fin-states-title {
+  font-size: 21px;
+  font-weight: 700;
+}
+.fin-states-container Button {
+  font-size: 13px;
+  padding: 6.5px 18px;
+  font-weight: 500;
+}
+.fin-states-title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 
 @keyframes fadeOut {
   0% {

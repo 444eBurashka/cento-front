@@ -1,12 +1,10 @@
+import nextArrow from '../img/fin-next-arrow.svg';
+
 export default function NextArrow (props) {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "black", borderRadius: "50%", padding: "10px" }}
-        onClick={onClick}
-      >
-        ▶
+      <div className={className} onClick={onClick}>
+        <img src={nextArrow}></img>
       </div>
     );
 };
