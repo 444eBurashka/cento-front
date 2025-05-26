@@ -6,31 +6,42 @@ import "slick-carousel/slick/slick-theme.css";
 import FinanceLessonCard from './FinanceLessonCard';
 import FinPrevArrow from './FinPrevArrow';
 import FinNextArrow from './FinNextArroe';
-import { payedLessons } from '../data';
 
-const ImageSlider = (props) => {
-  const data = payedLessons;
-  const settings = {
-    nextArrow: <FinNextArrow/>,
-    prevArrow: <FinPrevArrow/>,
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: true
-  };
+const ImageSlider = ({ items = [], emptyMessage = "Нет данных" }) => {
+    const settings = {
+        nextArrow: <FinNextArrow />,
+        prevArrow: <FinPrevArrow />,
+        dots: true,
+        infinite: items.length > 3,
+        speed: 500,
+        slidesToShow: Math.min(3, items.length),
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: items.length > 3
+    };
 
-  return (
-    <Slider className='FinSlider' {...settings}>
-      {
-        data.map((elem) => (
-            <FinanceLessonCard Date={elem.date} Time={elem.time} theme={elem.theme} student={elem.student} subject={elem.subject}/>
-        ))
-      }
-    </Slider>
-  );
+    if (items.length === 0) {
+        return <div className="empty-slider-message">{emptyMessage}</div>;
+    }
+
+    return (
+        <Slider className='FinSlider' {...settings}>
+            {items.map((lesson) => (
+                <FinanceLessonCard 
+                    key={lesson.id}
+                    Date={lesson.date} 
+                    Time={lesson.time} 
+                    theme={lesson.theme} 
+                    student={lesson.student} 
+                    subject={lesson.subject}
+                    cost={lesson.cost}
+                    isPaid={lesson.isPaid}
+                    onPaymentClick={lesson.onPaymentClick}
+                />
+            ))}
+        </Slider>
+    );
 };
 
 export default ImageSlider;

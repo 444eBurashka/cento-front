@@ -10,7 +10,13 @@ export default function FinanceLessonCard(props) {
             <p>{props.subject}</p>
             <p className="fin-theme">{props.theme}</p>
             <p className="fin-student">{props.student}</p>
-            <Button buttonName='оплатить' buttonClass='account-btn'></Button>
+            {!props.isPaid && props.onPaymentClick && (
+                <Button 
+                    buttonName='отметить оплату' 
+                    buttonClass='account-btn'
+                    onClick={props.onPaymentClick}
+                />
+            )}
         </div>
-      );
+    );
 }

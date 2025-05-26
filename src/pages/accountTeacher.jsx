@@ -237,6 +237,9 @@ export default function AccountTeacher(props) {
                             </div>
                         </div>
                         <div className='profile-container-interface'>
+                            <Link to="/finance-report">   
+                                <Button buttonName="Финансы" buttonClass="editBtn" />
+                            </Link>
                             <Link to="/timetable-teacher">   
                                 <Button buttonName="К расписанию" buttonClass="editBtn" />
                             </Link>
