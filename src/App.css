@@ -1242,22 +1242,22 @@ h2 {
   align-items: center;
 }
 .lesson-desc-close-btn, .lesson-desc-edit-btn,
-.lesson-add-close-btn, .lesson-add-edit-btn  {
+.lesson-add-close-btn, .lesson-add-edit-btn, .lesson-delete-btn  {
   background-color: transparent;
   border: none;
   padding: 0px;
 }
-.lesson-desc-edit-btn, .lesson-add-edit-btn {
+.lesson-desc-edit-btn, .lesson-add-edit-btn, .lesson-delete-btn {
   margin-right: 10px;
 }
-.lesson-desc-info-text, .lesson-add-info-text {
+.lesson-desc-info-text, .lesson-add-info-text, .lesson-delete-btn {
   font-size: 21px;
 }
-.time-info, .people-info, .repeat-info, .subject-info, .color-info {
+.time-info, .people-info, .repeat-info, .subject-info, .color-info, .cost-info {
   display: flex;
   margin-bottom: 13px;
 }
-.time-info img, .people-info img, .repeat-info img, .subject-info img, .color-info img {
+.time-info img, .people-info img, .repeat-info img, .subject-info img, .color-info img, .cost-info img {
   margin-right: 16px;
 }
 .lesson-desc-info-time, .lesson-add-info-time{
